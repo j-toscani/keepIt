@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "A simple web app to create, edit and structure notes.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "tsc"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/j-toscani/keepit.git"
