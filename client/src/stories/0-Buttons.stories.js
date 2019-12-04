@@ -6,5 +6,5 @@ export default {
 };
 
 export const MenuButton = () => (
-  <BurgerButton handleClick={alert("Clicked!")} />
+  <BurgerButton handleClick={() => alert("Clicked!")} />
 );
