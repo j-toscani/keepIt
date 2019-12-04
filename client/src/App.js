@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "./GlobalStyles";
 import colorTheme from "./themes/colorTheme";
 import darkTheme from "./themes/darkTheme";
+import Top from "./components/Top";
 
 const Container = styled.div`
   margin: 0;
@@ -22,12 +23,10 @@ function App() {
     <ThemeProvider theme={darkmode ? darkTheme : colorTheme}>
       <Container>
         <GlobalStyles />
-        <header style={{ border: "1pt black solid" }} black>
-          I am a header
-        </header>
+        <Top />
         <main>
           <h1>I am a h1 in a Main</h1>
-          <button onClick={toggleTheme}> Click to change colors</button>
+          <button onClick={toggleTheme}>Dieser Button toggled den Theme</button>
         </main>
       </Container>
     </ThemeProvider>
