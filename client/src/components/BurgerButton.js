@@ -14,9 +14,9 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-export default function BurgerButton({ handleClick }) {
+export default function BurgerButton({ onClick }) {
   return (
-    <StyledButton onClick={handleClick}>
+    <StyledButton onClick={onClick}>
       <Options />
     </StyledButton>
   );
