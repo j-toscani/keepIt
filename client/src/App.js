@@ -5,7 +5,7 @@ import colorTheme from "./themes/colorTheme";
 import darkTheme from "./themes/darkTheme";
 import Top from "./components/Top";
 import Form from "./components/Form";
-
+import OutputTest from "./components/OutputTest";
 
 const Container = styled.div`
   margin: 0;
@@ -20,6 +20,7 @@ const Main = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   overflow: auto;
   flex-wrap: wrap;
 `;
@@ -38,6 +39,7 @@ function App() {
         <Top handleClick={toggleTheme} darkmode={darkmode} />
         <Main>
           <Form />
+          <OutputTest />
         </Main>
       </Container>
     </ThemeProvider>
