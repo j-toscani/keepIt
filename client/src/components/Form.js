@@ -29,7 +29,7 @@ export default function Form() {
   function addTimeInfoToOutput() {
     const output = { ...noteInformation };
 
-    if (output.tags && output.name) {
+    if (output.content && output.name) {
       const timestamp = new Date(Date.now());
       const date = timestamp.toDateString();
       const dateTime =
@@ -58,8 +58,9 @@ export default function Form() {
         />
         <label>Content</label>
         <textarea
-          style={{ maxWidth: "240px" }}
+          style={{ width: "240px" }}
           placeholder="Textfield to write stuff in..."
+          onChange={event => getInputValue("content", event.target.value)}
         ></textarea>
         <button
           type="submit"
@@ -71,6 +72,7 @@ export default function Form() {
           onSubmit={e => {
             e.preventDefault();
             const output = addTimeInfoToOutput();
+
             console.log(output);
           }}
         >
