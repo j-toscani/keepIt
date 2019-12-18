@@ -27,7 +27,7 @@ export default function LogoCM() {
             transform="matrix(0.995, -0.105, 0.105, 0.995, -0.416, -0.803)"
             fill="#402b18"
             stroke="#000"
-            stroke-width="1"
+            strokeWidth="1"
           >
             <path
               d="M5,0H25.835a5,5,0,0,1,5,5V9.544a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V5A5,5,0,0,1,5,0Z"
@@ -52,7 +52,7 @@ export default function LogoCM() {
             transform="matrix(0.995, -0.105, 0.105, 0.995, 0.06, 0.428)"
             fill="#bf9e75"
             stroke="#000"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </g>
         <g transform="translate(5.856 14.285)">
@@ -63,7 +63,7 @@ export default function LogoCM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0, 2.255)"
               fill="none"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             />
             <line
               x2="21.887"
@@ -71,7 +71,7 @@ export default function LogoCM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.32, 5.26)"
               fill="none"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             />
             <line
               x2="21.887"
@@ -79,7 +79,7 @@ export default function LogoCM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.641, 8.264)"
               fill="none"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             />
             <line
               x2="8.755"
@@ -87,7 +87,7 @@ export default function LogoCM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.961, 11.268)"
               fill="none"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             />
           </g>
           <line
@@ -96,7 +96,7 @@ export default function LogoCM() {
             transform="matrix(0.995, -0.105, 0.105, 0.995, 2.149, 25.275)"
             fill="none"
             stroke="#000"
-            stroke-width="1"
+            strokeWidth="1"
           />
           <g transform="translate(6.413 14.819)">
             <line
@@ -105,7 +105,7 @@ export default function LogoCM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0, 0.902)"
               fill="none"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             />
             <line
               x2="8.755"
@@ -113,7 +113,7 @@ export default function LogoCM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.275, 3.477)"
               fill="none"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             />
             <line
               x2="8.755"
@@ -121,7 +121,7 @@ export default function LogoCM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.549, 6.052)"
               fill="none"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             />
           </g>
           <g transform="translate(3.468 14.761)">
@@ -129,7 +129,7 @@ export default function LogoCM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.275, 2.755)"
               fill="none"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             >
               <rect width="1.754" height="1.729" stroke="none" />
               <rect x="0.5" y="0.5" width="0.754" height="0.729" fill="none" />
@@ -138,7 +138,7 @@ export default function LogoCM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0, 0.18)"
               fill="none"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             >
               <rect width="1.754" height="1.729" stroke="none" />
               <rect x="0.5" y="0.5" width="0.754" height="0.729" fill="none" />
@@ -147,7 +147,7 @@ export default function LogoCM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.549, 5.331)"
               fill="none"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             >
               <rect width="1.754" height="1.729" stroke="none" />
               <rect x="0.5" y="0.5" width="0.754" height="0.729" fill="none" />
@@ -160,7 +160,7 @@ export default function LogoCM() {
               transform="translate(11.753 0) rotate(27)"
               fill="#bf9e75"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             >
               <rect width="4.45" height="25.887" stroke="none" />
               <rect x="0.5" y="0.5" width="3.45" height="24.887" fill="none" />
@@ -171,7 +171,7 @@ export default function LogoCM() {
               transform="translate(1.83 0.721)"
               fill="none"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             />
           </g>
           <g transform="translate(11.758)">
@@ -179,7 +179,7 @@ export default function LogoCM() {
               transform="translate(1.027 0) rotate(27)"
               fill="#402b18"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             >
               <rect width="4.588" height="2.209" stroke="none" />
               <rect x="0.5" y="0.5" width="3.588" height="1.209" fill="none" />
@@ -190,7 +190,7 @@ export default function LogoCM() {
               d="M181.171,554.353l.1,4.336,3.784-2.385Z"
               transform="translate(-181.171 -554.353)"
               stroke="#000"
-              stroke-width="1"
+              strokeWidth="1"
             />
           </g>
         </g>

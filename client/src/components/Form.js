@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import SmallTextInput from "./formComponents/SmallTextInput";
+import TagInput from "./formComponents/TagInput";
 
 const StyledForm = styled.form`
   background: ${props => props.theme.accent};
@@ -16,19 +18,64 @@ const StyledForm = styled.form`
 `;
 
 export default function Form() {
+  const [noteInformation, setNoteInformation] = React.useState({});
+
+  function getInputValue(attribute, value) {
+    const newNoteInformation = { ...noteInformation };
+    newNoteInformation[attribute] = value;
+    setNoteInformation(newNoteInformation);
+  }
+
+  function addTimeInfoToOutput() {
+    const output = { ...noteInformation };
+
+    if (output.tags && output.name) {
+      const timestamp = new Date(Date.now());
+      const date = timestamp.toDateString();
+      const dateTime =
+        timestamp.getHours() +
+        ":" +
+        timestamp.getMinutes() +
+        ":" +
+        (timestamp.getSeconds() <= 9
+          ? 0 + timestamp.getSeconds()
+          : timestamp.getSeconds());
+      output["published"] = { date, dateTime };
+      return output;
+    } else {
+      alert("Please enter content and a headline to your note.");
+    }
+  }
+
   return (
     <>
       <StyledForm>
-        <label>Name</label>
-        <input placeholder="Name"></input>
-        <label>Tags</label>
-        <input placeholder="Tag1; Tag2; Tag3 ..."></input>
+        <SmallTextInput handleChange={getInputValue} inputAttribute={"name"} />
+        <TagInput
+          handleChange={getInputValue}
+          inputAttribute={"tags"}
+          placeholder={"Tag1; Tag2; Tag3 ..."}
+        />
         <label>Content</label>
         <textarea
           style={{ maxWidth: "240px" }}
           placeholder="Textfield to write stuff in..."
         ></textarea>
-        <button type="submit">Submit</button>
+        <button
+          type="submit"
+          onClick={e => {
+            e.preventDefault();
+            const output = addTimeInfoToOutput();
+            console.log(output);
+          }}
+          onSubmit={e => {
+            e.preventDefault();
+            const output = addTimeInfoToOutput();
+            console.log(output);
+          }}
+        >
+          Submit
+        </button>
       </StyledForm>
     </>
   );
