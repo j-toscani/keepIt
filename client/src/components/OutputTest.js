@@ -36,9 +36,7 @@ export default function OutputTest() {
         <input name="noteId" placeholder="Note-ID"></input>
         <button type="submit">Get note...</button>
       </StyledForm>
-      <TextField>
-        99999999999999999999999999999999999999999999999999999999999999999999999999999999
-      </TextField>
+      <TextField>Empty</TextField>
     </Container>
   );
 }

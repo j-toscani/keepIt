@@ -11,7 +11,7 @@ const StyledInput = styled.input`
   max-width: 80px;
 `;
 
-export default function TagInput({
+export default function SmallTextInput({
   handleChange,
   inputAttribute,
   inputLabel,
@@ -20,14 +20,12 @@ export default function TagInput({
   return (
     <StyledContainer>
       <label htmlFor={inputAttribute}>
-        {inputLabel ? inputLabel : inputAttribute}
+        {inputLabel ? inputLabel : inputAttribute}{" "}
       </label>
       <StyledInput
         name={inputAttribute}
         placeholder={placeholder ? placeholder : inputAttribute}
-        onChange={event =>
-          handleChange(inputAttribute, event.target.value.split(";"))
-        }
+        onChange={event => handleChange(inputAttribute, event.target.value)}
       ></StyledInput>
     </StyledContainer>
   );

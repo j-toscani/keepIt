@@ -49,7 +49,7 @@ export default function LogoDM() {
             transform="matrix(0.995, -0.105, 0.105, 0.995, -0.057, 0.594)"
             fill="#514637"
             stroke="#dfdfdf"
-            stroke-width="0.5"
+            strokeWidth="0.5"
           />
         </g>
         <g transform="translate(6.12 13.004)">
@@ -60,7 +60,7 @@ export default function LogoDM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0, 2.255)"
               fill="none"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             />
             <line
               x2="21.887"
@@ -68,7 +68,7 @@ export default function LogoDM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.32, 5.26)"
               fill="none"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             />
             <line
               x2="21.887"
@@ -76,7 +76,7 @@ export default function LogoDM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.641, 8.264)"
               fill="none"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             />
             <line
               x2="8.755"
@@ -84,7 +84,7 @@ export default function LogoDM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.961, 11.268)"
               fill="none"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             />
           </g>
           <line
@@ -93,7 +93,7 @@ export default function LogoDM() {
             transform="matrix(0.995, -0.105, 0.105, 0.995, 2.149, 25.275)"
             fill="none"
             stroke="#dfdfdf"
-            stroke-width="1"
+            strokeWidth="1"
           />
           <g transform="translate(6.413 14.819)">
             <line
@@ -102,7 +102,7 @@ export default function LogoDM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0, 0.902)"
               fill="none"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             />
             <line
               x2="8.755"
@@ -110,7 +110,7 @@ export default function LogoDM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.275, 3.477)"
               fill="none"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             />
             <line
               x2="8.755"
@@ -118,7 +118,7 @@ export default function LogoDM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.549, 6.052)"
               fill="none"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             />
           </g>
           <g transform="translate(3.468 14.761)">
@@ -126,7 +126,7 @@ export default function LogoDM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.275, 2.755)"
               fill="none"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             >
               <rect width="1.754" height="1.729" stroke="none" />
               <rect x="0.5" y="0.5" width="0.754" height="0.729" fill="none" />
@@ -135,7 +135,7 @@ export default function LogoDM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0, 0.18)"
               fill="none"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             >
               <rect width="1.754" height="1.729" stroke="none" />
               <rect x="0.5" y="0.5" width="0.754" height="0.729" fill="none" />
@@ -144,7 +144,7 @@ export default function LogoDM() {
               transform="matrix(0.995, -0.105, 0.105, 0.995, 0.549, 5.331)"
               fill="none"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             >
               <rect width="1.754" height="1.729" stroke="none" />
               <rect x="0.5" y="0.5" width="0.754" height="0.729" fill="none" />
@@ -157,7 +157,7 @@ export default function LogoDM() {
               transform="translate(12.025 0) rotate(27)"
               fill="#514637"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             >
               <rect width="4.549" height="26.487" stroke="none" />
               <rect x="0.5" y="0.5" width="3.549" height="25.487" fill="none" />
@@ -168,7 +168,7 @@ export default function LogoDM() {
               transform="translate(1.868 0.61)"
               fill="none"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             />
           </g>
           <g transform="translate(11.955)">
@@ -176,7 +176,7 @@ export default function LogoDM() {
               transform="translate(1.051 0) rotate(27)"
               fill="rgba(0,0,0,0.9)"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             >
               <rect width="4.696" height="2.26" stroke="none" />
               <rect x="0.5" y="0.5" width="3.696" height="1.26" fill="none" />
@@ -188,7 +188,7 @@ export default function LogoDM() {
               transform="translate(-181.171 -554.353)"
               fill="rgba(0,0,0,0.9)"
               stroke="#dfdfdf"
-              stroke-width="1"
+              strokeWidth="1"
             />
           </g>
         </g>
