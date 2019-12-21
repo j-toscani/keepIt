@@ -28,5 +28,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "mongodb": "^3.4.1"
+  }
 }
