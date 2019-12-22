@@ -6,7 +6,7 @@ async function initDatabase(url, dbName) {
     useUnifiedTopology: true
   });
   await client.connect();
-  db = client.db(process.env.DB_NAME);
+  db = client.db(dbName);
 }
 
 async function getCollections(collectionName) {
