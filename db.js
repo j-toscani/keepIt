@@ -9,7 +9,7 @@ async function initDatabase(url, dbName) {
   db = client.db(dbName);
 }
 
-async function getCollections(collectionName) {
+async function getCollection(collectionName) {
   if (!db) {
     throw new Error("You have to initialize the database first");
   }
@@ -17,4 +17,4 @@ async function getCollections(collectionName) {
 }
 
 exports.initDatabase = initDatabase;
-exports.getCollection = getCollections;
+exports.getCollection = getCollection;
