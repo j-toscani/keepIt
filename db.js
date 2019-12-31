@@ -5,8 +5,12 @@ async function initDatabase(url, dbName) {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
-  await client.connect();
-  db = client.db(dbName);
+  try {
+    await client.connect();
+    db = client.db(dbName);
+  } catch (error) {
+    console.log("Database can not connect. Check the connection URL.");
+  }
 }
 
 async function getCollection(collectionName) {
