@@ -2,12 +2,13 @@ require("dotenv").config();
 const express = require("express");
 
 const { initDatabase } = require("./db");
+const { getNoteList, setNewNote, deleteNote } = require("./lib/notes");
 
 const app = express();
 const path = require("path");
 
 const port = process.env.PORT || 5000;
-const dbURL = process.env.DB_URL || "'mongodb://localhost:27017";
+const dbURL = process.env.DB_URL || "mongodb://localhost:27017";
 const dbName = process.env.DB_NAME || "MyNotes";
 
 app.use(express.json());
@@ -24,6 +25,7 @@ app.get(`/notes`, async (request, response) => {
 app.post(`/notes`, async (request, response) => {
   try {
     const newNote = await setNewNote(request.body);
+    console.log("NewNote set");
     return response.json(newNote);
   } catch (error) {
     return response.end("Error");

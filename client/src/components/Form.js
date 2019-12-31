@@ -28,7 +28,6 @@ export default function Form() {
 
   function addTimeInfoToOutput() {
     const output = { ...noteInformation };
-
     if (output.content && output.name) {
       const timestamp = new Date(Date.now());
       const date = timestamp.toDateString();
@@ -67,13 +66,10 @@ export default function Form() {
           onClick={e => {
             e.preventDefault();
             const output = addTimeInfoToOutput();
-            console.log(output);
           }}
           onSubmit={e => {
             e.preventDefault();
             const output = addTimeInfoToOutput();
-
-            console.log(output);
           }}
         >
           Submit
