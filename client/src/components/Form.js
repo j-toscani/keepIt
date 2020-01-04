@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SmallTextInput from "./formComponents/SmallTextInput";
 import TagInput from "./formComponents/TagInput";
-import createDateTimeInfo from "../lib/createDateTimeInfo";
-import { createNewEntry } from "../lib/fetchNotes";
+import createNewNote from "../lib/createDateTimeInfo";
 
 const StyledForm = styled.form`
   background: ${props => props.theme.accent};
@@ -47,30 +46,11 @@ export default function Form() {
           type="submit"
           onClick={e => {
             e.preventDefault();
-            let note = { ...noteInformation };
-
-            if (note.content && note.name) {
-              note = createDateTimeInfo(note);
-              createNewEntry("/notes", note).then(response =>
-                console.log(response)
-              );
-            } else {
-              alert("Please enter content and a headline to your note.");
-            }
+            createNewNote(noteInformation);
           }}
           onSubmit={e => {
             e.preventDefault();
-            let note = { ...noteInformation };
-
-            if (note.content && note.name) {
-              note = createDateTimeInfo(note);
-
-              createNewEntry("/notes", note).then(response =>
-                console.log(response)
-              );
-            } else {
-              alert("Please enter content and a headline to your note.");
-            }
+            createNewNote(noteInformation);
           }}
         >
           Submit

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { fetchNoteList, deleteEntry } from "../lib/fetchNotes";
+import Note from "./Note";
 
 const TextField = styled.div`
   margin: 20px;
@@ -12,25 +12,7 @@ export default function OutputTest({ setData, data }) {
   return (
     <TextField>
       {data != null &&
-        data.map(entry => (
-          <div key={entry._id}>
-            {entry._id +
-              " " +
-              entry.name +
-              " " +
-              entry.content +
-              " " +
-              entry.published}
-            <button
-              onClick={() => {
-                deleteEntry("/notes", entry._id);
-                fetchNoteList("/notes").then(response => setData(response));
-              }}
-            >
-              X
-            </button>
-          </div>
-        ))}
+        data.map(entry => <Note entry={entry} setData={setData}></Note>)}
     </TextField>
   );
 }
