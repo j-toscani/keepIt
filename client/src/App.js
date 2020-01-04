@@ -6,6 +6,7 @@ import darkTheme from "./themes/darkTheme";
 import Top from "./components/Top";
 import Form from "./components/Form";
 import OutputTest from "./components/OutputTest";
+import { fetchNoteList } from "./lib/fetchNotes";
 
 const Container = styled.div`
   margin: 0;
@@ -27,10 +28,15 @@ const Main = styled.main`
 
 function App() {
   const [darkmode, setDarkmode] = React.useState(false);
+  const [data, setData] = React.useState(null);
 
   function toggleTheme() {
     setDarkmode(!darkmode);
   }
+
+  React.useEffect(() => {
+    fetchNoteList("/notes").then(response => setData(response));
+  }, []);
 
   return (
     <ThemeProvider theme={darkmode ? darkTheme : colorTheme}>
@@ -39,7 +45,7 @@ function App() {
         <Top handleClick={toggleTheme} darkmode={darkmode} />
         <Main>
           <Form />
-          <OutputTest />
+          <OutputTest setData={setData} data={data} />
         </Main>
       </Container>
     </ThemeProvider>
