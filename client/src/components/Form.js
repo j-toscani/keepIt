@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SmallTextInput from "./formComponents/SmallTextInput";
 import TagInput from "./formComponents/TagInput";
+import createNewNote from "../lib/createDateTimeInfo";
 
 const StyledForm = styled.form`
   background: ${props => props.theme.accent};
@@ -26,27 +27,6 @@ export default function Form() {
     setNoteInformation(newNoteInformation);
   }
 
-  function addTimeInfoToOutput() {
-    const output = { ...noteInformation };
-
-    if (output.content && output.name) {
-      const timestamp = new Date(Date.now());
-      const date = timestamp.toDateString();
-      const dateTime =
-        timestamp.getHours() +
-        ":" +
-        timestamp.getMinutes() +
-        ":" +
-        (timestamp.getSeconds() <= 9
-          ? 0 + timestamp.getSeconds()
-          : timestamp.getSeconds());
-      output["published"] = { date, dateTime };
-      return output;
-    } else {
-      alert("Please enter content and a headline to your note.");
-    }
-  }
-
   return (
     <>
       <StyledForm>
@@ -66,14 +46,11 @@ export default function Form() {
           type="submit"
           onClick={e => {
             e.preventDefault();
-            const output = addTimeInfoToOutput();
-            console.log(output);
+            createNewNote(noteInformation);
           }}
           onSubmit={e => {
             e.preventDefault();
-            const output = addTimeInfoToOutput();
-
-            console.log(output);
+            createNewNote(noteInformation);
           }}
         >
           Submit
