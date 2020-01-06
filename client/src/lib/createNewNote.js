@@ -1,6 +1,6 @@
-import { createNewEntry } from "../lib/fetchNotes";
+import { createNewEntry } from "../api/notes";
 
-function createDateTimeInfo(data) {
+function addDateAndTimeInfoToData(data) {
   const timestamp = new Date(Date.now());
   const date = timestamp.toDateString();
   const dateTime =
@@ -20,7 +20,7 @@ function createDateTimeInfo(data) {
 export default function createNewNote(formData) {
   let note = { ...formData };
   if (note.content && note.name) {
-    note = createDateTimeInfo(note);
+    note = addDateAndTimeInfoToData(note);
     createNewEntry("/notes", note).then(response => console.log(response));
   } else {
     alert("Please enter content and a headline to your note.");

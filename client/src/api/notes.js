@@ -1,4 +1,4 @@
-export async function fetchNoteList(path) {
+export async function fetchList(path) {
   const gotData = fetch(path).then(response => response.json());
   const newData = await gotData;
   return newData;
