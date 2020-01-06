@@ -15,8 +15,8 @@ export async function createNewEntry(path, data) {
 }
 
 export async function deleteEntry(path, id) {
-  const deleteUrl = path + "/" + id;
-  return fetch(deleteUrl, {
+  const deletePath = `${path}/${id}`;
+  return fetch(deletePath, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
