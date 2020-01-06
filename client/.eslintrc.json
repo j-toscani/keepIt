@@ -6,7 +6,7 @@
     "jest": true
   },
   "extends": ["eslint:recommended",
-     "prettier"],
+    "plugin:react/recommended", "prettier", "prettier/react"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -18,9 +18,12 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [],
+  "plugins": ["react", "import", "react-hooks"],
   "rules": {
-    "no-console":1
+    "react/prop-types":0,
+    "no-console":1,
+    "react-hooks/rules-of-hooks":2,
+    "react-hooks/exhaustive-deps":1
   },
   "settings": {
     "react": {

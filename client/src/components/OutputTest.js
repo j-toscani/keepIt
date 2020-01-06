@@ -12,7 +12,9 @@ export default function OutputTest({ setData, data }) {
   return (
     <TextField>
       {data != null &&
-        data.map(entry => <Note entry={entry} setData={setData}></Note>)}
+        data.map(entry => (
+          <Note key={entry._id} entry={entry} setData={setData}></Note>
+        ))}
     </TextField>
   );
 }

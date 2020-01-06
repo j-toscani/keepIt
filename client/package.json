@@ -17,7 +17,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook --quiet -c .storybook"
+    "build-storybook": "build-storybook --quiet -c .storybook",
+    "lint": "npm run lint --prefix ..",
+    "lint:client": "npm run lint:client --prefix ..",
+    "check": "npm run check --prefix .."
   },
   "eslintConfig": {
     "extends": "react-app"

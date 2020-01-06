@@ -3,7 +3,7 @@ import { fetchList, deleteEntry } from "../api/notes";
 
 export default function Note({ entry, setData }) {
   return (
-    <div key={entry._id}>
+    <div>
       <ul>
         <li>{entry._id}</li>
         <li>{entry.name}</li>
