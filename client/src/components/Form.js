@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SmallTextInput from "./formComponents/SmallTextInput";
 import TagInput from "./formComponents/TagInput";
-import createNewNote from "../lib/createDateTimeInfo";
+import SubmitButton from "./formComponents/SubmitButton";
 
 const StyledForm = styled.form`
   background: ${props => props.theme.accent};
@@ -42,19 +42,7 @@ export default function Form() {
           placeholder="Textfield to write stuff in..."
           onChange={event => getInputValue("content", event.target.value)}
         ></textarea>
-        <button
-          type="submit"
-          onClick={e => {
-            e.preventDefault();
-            createNewNote(noteInformation);
-          }}
-          onSubmit={e => {
-            e.preventDefault();
-            createNewNote(noteInformation);
-          }}
-        >
-          Submit
-        </button>
+        <SubmitButton noteInformation={noteInformation} />
       </StyledForm>
     </>
   );

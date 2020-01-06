@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchNoteList, deleteEntry } from "../lib/fetchNotes";
+import { fetchList, deleteEntry } from "../api/notes";
 
 export default function Note({ entry, setData }) {
   return (
@@ -13,7 +13,7 @@ export default function Note({ entry, setData }) {
       <button
         onClick={() => {
           deleteEntry("/notes", entry._id);
-          fetchNoteList("/notes").then(response => setData(response));
+          fetchList("/notes").then(response => setData(response));
         }}
       >
         X

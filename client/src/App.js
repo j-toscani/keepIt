@@ -6,7 +6,7 @@ import darkTheme from "./themes/darkTheme";
 import Top from "./components/Top";
 import Form from "./components/Form";
 import OutputTest from "./components/OutputTest";
-import { fetchNoteList } from "./lib/fetchNotes";
+import { fetchList } from "./api/notes";
 
 const Container = styled.div`
   margin: 0;
@@ -35,7 +35,7 @@ function App() {
   }
 
   React.useEffect(() => {
-    fetchNoteList("/notes").then(response => setData(response));
+    fetchList("/notes").then(response => setData(response));
   }, []);
 
   return (
