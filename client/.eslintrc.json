@@ -5,8 +5,14 @@
     "es6": true,
     "jest": true
   },
-  "extends": ["eslint:recommended",
-    "plugin:react/recommended", "prettier", "prettier/react"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/reccomended",
+    "prettier",
+    "prettier/react"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -18,17 +24,22 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "import", "react-hooks"],
+  "plugins": [
+    "react",
+    "import",
+    "react-hooks",
+    "jsx-a11y"
+  ],
   "rules": {
-    "react/prop-types":0,
-    "no-console":1,
-    "react-hooks/rules-of-hooks":2,
-    "react-hooks/exhaustive-deps":1
+    "react/prop-types": 0,
+    "no-console": 1,
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": 1
   },
   "settings": {
     "react": {
-      "pragma": "React",  
+      "pragma": "React",
       "version": "detect"
-     }
+    }
   }
 }
