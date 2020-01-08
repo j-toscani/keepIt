@@ -6,7 +6,6 @@
   "scripts": {
     "start:server": "nodemon server.js",
     "lint:server": "eslint \"*.js\" && eslint \"./lib/*.js\"",
-    "lint": "npm run lint:server && npm run lint:client",
     "check": "npm run format && npm run lint"
   },
   "homepage": "https://github.com/j-toscani/keepit#readme",
@@ -15,8 +14,7 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-import": "^2.19.1",
-    "nodemon": "^2.0.2",
-    "prettier": "^1.19.1"
+    "nodemon": "^2.0.2"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
