@@ -3,21 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@emotion/core": "^10.0.27",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-router": "^5.1.2",
-    "styled-components": "^4.4.1"
+    "react-router": "^5.1.2"
   },
   "scripts": {
-    "start": "parcel src/index.html",
+    "start": "parcel src/index.html --port 3000",
+    "build": "parcel build src/index.js",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook --quiet -c .storybook",
-    "lint": "npm run lint --prefix ..",
-    "lint:client": "npm run lint:client --prefix ..",
-    "check": "npm run check --prefix ..",
-    "dev": "npm run dev --prefix .."
+    "lint:client": "eslint client/src/**/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"
