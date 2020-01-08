@@ -1,4 +1,4 @@
-name: Node CI
+name: Node CI - linting (test action)
 
 on: [push]
 
@@ -17,10 +17,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, format, and lint
+    - name: npm install and lint
       run: |
         npm ci
-        npm run format
         npm run lint
       env:
         CI: true
