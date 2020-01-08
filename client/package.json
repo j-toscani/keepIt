@@ -16,7 +16,8 @@
     "build-storybook": "build-storybook --quiet -c .storybook",
     "lint": "npm run lint --prefix ..",
     "lint:client": "npm run lint:client --prefix ..",
-    "check": "npm run check --prefix .."
+    "check": "npm run check --prefix ..",
+    "dev": "npm run dev --prefix .."
   },
   "eslintConfig": {
     "extends": "react-app"
