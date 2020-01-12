@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { css } from "@emotion/core";
 
 function UnstyledOptions({ className }) {
   return (
@@ -69,9 +69,13 @@ function UnstyledOptions({ className }) {
   );
 }
 
-const Options = styled(UnstyledOptions)`
-  flex-grow: 1;
-  margin: 1px;
-`;
+const Options = () => (
+  <UnstyledOptions
+    css={css`
+      flex-grow: 1;
+      margin: 1px;
+    `}
+  ></UnstyledOptions>
+);
 
 export default Options;
