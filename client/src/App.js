@@ -1,12 +1,15 @@
 /** @jsx jsx */
-
+import { css, jsx } from "@emotion/core";
 import { Fragment, useState, useEffect } from "react";
+
 import Top from "./components/Top";
 import Form from "./components/Form";
 import OutputTest from "./components/OutputTest";
-import { fetchList } from "./api/notes";
-import { css, jsx } from "@emotion/core";
+import GridContainer from "./components/appContainer/GridContainer";
+import MainContainer from "./components/appContainer/MainContainer";
 import GlobalStyles from "./GlobalStyles";
+
+import { fetchList } from "./api/notes";
 
 function App() {
   const [darkmode, setDarkmode] = useState(false);
@@ -29,17 +32,9 @@ function App() {
   return (
     <Fragment>
       <GlobalStyles />
-      <div
-        css={css`
-          margin: 0;
-          width: 100vw;
-          height: 100vh;
-          display: grid;
-          grid-template: 80px 1fr / 1fr;
-        `}
-      >
+      <GridContainer>
         <Top handleClick={toggleTheme} darkmode={darkmode} />
-        <main
+        <MainContainer
           css={css`
             margin: 20px;
             display: flex;
@@ -52,8 +47,8 @@ function App() {
         >
           <Form />
           <OutputTest setData={setData} data={data} />
-        </main>
-      </div>
+        </MainContainer>
+      </GridContainer>
     </Fragment>
   );
 }
