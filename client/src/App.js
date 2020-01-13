@@ -7,6 +7,8 @@ import OutputTest from "./components/OutputTest";
 import { fetchList } from "./api/notes";
 import { css, jsx } from "@emotion/core";
 import GlobalStyles from "./GlobalStyles";
+import colorTheme from "./themes/colorTheme";
+import darkTheme from "./themes/darkTheme";
 
 function App() {
   const [darkmode, setDarkmode] = useState(false);
