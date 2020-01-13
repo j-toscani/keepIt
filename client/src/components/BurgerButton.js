@@ -1,5 +1,5 @@
-import React from "react";
-import { css } from "@emotion/core";
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
 import Options from "../ressources/Options";
 
 export default function BurgerButton({ onClick }) {

@@ -1,6 +1,9 @@
-import { Global, css } from "styled-components";
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
+import { Global, css } from "@emotion/core";
 
 export default function GlobalStyles() {
+  //change with styles
   return (
     <Global
       styles={css`
@@ -13,8 +16,8 @@ export default function GlobalStyles() {
           font-size: 16px;
           margin: 0;
           padding: 0;
-          background: ${props => props.theme.main};
-          color: ${props => props.theme.accentFont};
+          background: black;
+          color: white;
           font-family: "Roboto", sans-serif;
         }
       `}

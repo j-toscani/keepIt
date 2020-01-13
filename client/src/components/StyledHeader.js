@@ -1,10 +1,12 @@
-import { css } from "@emotion/core";
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
 
 const StyledHeader = () => (
+  //change with styles
   <header
     css={css`
-      background: ${props => props.theme.contrast};
-      color: ${props => props.theme.mainFont};
+      background: yellow;
+      color: orange;
       display: flex;
       padding: 20px;
       width: 100%;

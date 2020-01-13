@@ -1,4 +1,5 @@
-import React from "react";
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
 import createNewNote from "../../lib/createNewNote";
 
 export default function SubmitButton({ noteInformation }) {
