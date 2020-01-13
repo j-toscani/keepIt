@@ -1,5 +1,5 @@
-import React from "react";
-import { css } from "@emotion/core";
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
 import Note from "./Note";
 
 export default function OutputTest({ setData, data }) {
@@ -11,7 +11,7 @@ export default function OutputTest({ setData, data }) {
         padding: 10px;
       `}
     >
-      {data != null &&
+      {data === "waiting for Data" &&
         data.map(entry => (
           <Note key={entry._id} entry={entry} setData={setData}></Note>
         ))}
