@@ -16,19 +16,13 @@ function App() {
     setDarkmode(!darkmode);
   }
 
-<<<<<<< HEAD
   React.useEffect(() => {
-    fetchList("http://localhost:5000/notes").then(response =>
-      setData(response)
-=======
-  useEffect(() => {
-    fetchList("/notes").then(
+    fetchList("http://localhost:5000/notes").then(
       response => setData(response),
       () => {
         setData(["waiting for Data"]);
         console.log("something went wrong");
       }
->>>>>>> add emotion
     );
   }, []);
 
