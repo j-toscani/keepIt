@@ -10,6 +10,8 @@ import MainContainer from "./components/appContainer/MainContainer";
 import GlobalStyles from "./GlobalStyles";
 
 import { fetchList } from "./api/notes";
+import colorTheme from "./themes/colorTheme";
+import darkTheme from "./themes/darkTheme";
 
 function App() {
   const [darkmode, setDarkmode] = useState(false);
