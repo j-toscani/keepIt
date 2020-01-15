@@ -1,14 +1,21 @@
-import styled from "styled-components";
+/** @jsx jsx */
+import { jsx, css } from "@emotion/core";
 
-const StyledHeader = styled.header`
-  background: ${props => props.theme.contrast};
-  color: ${props => props.theme.mainFont};
-  display: flex;
-  padding: 20px;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: space-around;
-`;
-
-export default StyledHeader;
+export default function StyledHeader(props) {
+  return (
+    <header
+      css={css`
+        background: red;
+        color: orange;
+        display: flex;
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: space-around;
+      `}
+    >
+      {props.children}
+    </header>
+  );
+}
