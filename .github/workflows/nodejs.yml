@@ -19,7 +19,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install and lint
       run: |
+        cd client
         npm ci
+        cd ../server
+        npm ci
+        cd ..
         npm run lint
       env:
         CI: true
