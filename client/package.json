@@ -5,13 +5,12 @@
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "@emotion/core": "^10.0.27",
-<<<<<<< HEAD
-    "prettier": "^1.19.1",
-=======
     "babel-loader": "^8.0.0",
->>>>>>> delete emotion theming
     "prop-types": "^15.7.2",
-    "react-router": "^5.1.2"
+    "react-router": "^5.1.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+   
   },
   "scripts": {
     "start": "parcel src/index.html --port 3000",
@@ -53,8 +52,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
     "parcel-bundler": "^1.12.4",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
     "react-test-renderer": "^16.12.0"
+   
   }
+
 }
