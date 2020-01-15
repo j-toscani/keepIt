@@ -1,7 +1,3 @@
 node_modules
 client/.cache
-<<<<<<< HEAD
 client/dist
-=======
-client/dist
->>>>>>> 378604a7f993225c065b4b72047da8e2adbb6b71
