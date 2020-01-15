@@ -1,4 +1,3 @@
-import { css } from "@emotion/core";
 import React, { Fragment, useState, useEffect } from "react";
 
 import Top from "./components/Top";
@@ -18,12 +17,11 @@ function App() {
     setDarkmode(!darkmode);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchList("http://localhost:5000/notes").then(
       response => setData(response),
       () => {
         setData(["waiting for Data"]);
-        console.log("something went wrong");
       }
     );
   }, []);
@@ -33,17 +31,7 @@ function App() {
       <GlobalStyles />
       <GridContainer>
         <Top handleClick={toggleTheme} darkmode={darkmode} />
-        <MainContainer
-          css={css`
-            margin: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            overflow: auto;
-            flex-wrap: wrap;
-          `}
-        >
+        <MainContainer>
           <Form />
           <OutputTest setData={setData} data={data} />
         </MainContainer>

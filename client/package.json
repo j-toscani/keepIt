@@ -16,7 +16,7 @@
     "build": "parcel build src/index.js",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook --quiet -c .storybook",
-    "lint": "eslint client/src/**/*.js"
+    "lint": "eslint src/**/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,6 +50,7 @@
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
     "parcel-bundler": "^1.12.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

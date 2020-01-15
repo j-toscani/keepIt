@@ -21,9 +21,7 @@ export default function createNewNote(formData) {
   let note = { ...formData };
   if (note.content && note.name) {
     note = addDateAndTimeInfoToData(note);
-    createNewEntry("http://localhost:5000/notes", note).then(response =>
-      console.log(response)
-    );
+    createNewEntry("http://localhost:5000/notes", note);
   } else {
     alert("Please enter content and a headline to your note.");
   }

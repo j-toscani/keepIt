@@ -9,7 +9,7 @@
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:react/recommended",
-    "plugin:jsx-a11y/reccomended",
+
     "prettier",
     "prettier/react"
   ],
@@ -24,12 +24,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "import",
-    "react-hooks",
-    "jsx-a11y"
-  ],
+  "plugins": ["react", "import", "react-hooks", "jsx-a11y"],
   "rules": {
     "react/prop-types": 0,
     "no-console": 1,
