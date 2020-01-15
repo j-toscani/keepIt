@@ -19,8 +19,6 @@ jobs:
       - name: npm install and lint
         run: |
           npm ci
-          npm --prefix /client ci /client 
-          npm --prefix /server ci /server
           npm run lint
         env:
           CI: true
