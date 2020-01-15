@@ -1,7 +1,6 @@
-/** @jsx jsx */
-import { css, jsx } from "@emotion/core";
+import { css } from "@emotion/core";
 
-const StyledHeader = () => (
+const StyledHeader = ({ children }) => (
   <header
     css={css`
       background: red;
@@ -13,7 +12,9 @@ const StyledHeader = () => (
       align-items: center;
       justify-content: space-around;
     `}
-  ></header>
+  >
+    {children}
+  </header>
 );
 
 export default StyledHeader;

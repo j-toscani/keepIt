@@ -1,10 +1,9 @@
-/** @jsx jsx */
-import { css, jsx } from "@emotion/core";
+import { css } from "@emotion/core";
 import Options from "../ressources/Options";
 
 export default function BurgerButton({ onClick }) {
   return (
-    <StyledButton
+    <button
       onClick={onClick}
       css={css`
         height: 40px;
@@ -19,6 +18,6 @@ export default function BurgerButton({ onClick }) {
       `}
     >
       <Options />
-    </StyledButton>
+    </button>
   );
 }

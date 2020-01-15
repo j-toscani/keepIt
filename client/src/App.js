@@ -1,6 +1,5 @@
-/** @jsx jsx */
-import { css, jsx } from "@emotion/core";
-import { Fragment, useState, useEffect } from "react";
+import { css } from "@emotion/core";
+import React, { Fragment, useState, useEffect } from "react";
 
 import Top from "./components/Top";
 import Form from "./components/Form";
@@ -10,8 +9,6 @@ import MainContainer from "./components/appContainer/MainContainer";
 import GlobalStyles from "./GlobalStyles";
 
 import { fetchList } from "./api/notes";
-import colorTheme from "./themes/colorTheme";
-import darkTheme from "./themes/darkTheme";
 
 function App() {
   const [darkmode, setDarkmode] = useState(false);

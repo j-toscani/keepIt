@@ -16,7 +16,7 @@
     "build": "parcel build src/index.js",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook --quiet -c .storybook",
-    "lint:client": "eslint client/src/**/*.js"
+    "lint": "eslint client/src/**/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"

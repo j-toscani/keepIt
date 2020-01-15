@@ -4,10 +4,8 @@
   "description": "A simple web app to create, edit and structure notes.",
   "main": "index.js",
   "scripts": {
-    "start:server": "nodemon server.js",
-    "lint:server": "eslint \"*.js\" && eslint \"./lib/*.js\"",
-    "lint": "npm run lint:server && npm run lint:client",
-    "check": "npm run format && npm run lint"
+    "start": "nodemon server.js",
+    "lint": "eslint \"*.js\" && eslint \"./lib/*.js\""
   },
   "homepage": "https://github.com/j-toscani/keepit#readme",
   "devDependencies": {
@@ -15,8 +13,7 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-import": "^2.19.1",
-    "nodemon": "^2.0.2",
-    "prettier": "^1.19.1"
+    "nodemon": "^2.0.2"
   },
   "dependencies": {
     "cors": "^2.8.5",
