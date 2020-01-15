@@ -8,8 +8,7 @@ import MainContainer from "./components/appContainer/MainContainer";
 import GlobalStyles from "./GlobalStyles";
 
 import { fetchList } from "./api/notes";
-
-//Task: add theming
+import ThemeProvider from "./themes/ThemeContext";
 
 function App() {
   const [darkmode, setDarkmode] = useState(false);
@@ -24,20 +23,23 @@ function App() {
       response => setData(response),
       () => {
         setData(["waiting for Data"]);
+        console.log("something went wrong");
       }
     );
   }, []);
 
   return (
     <Fragment>
-      <GlobalStyles />
-      <GridContainer>
-        <Top handleClick={toggleTheme} darkmode={darkmode} />
-        <MainContainer>
-          <Form />
-          <OutputTest setData={setData} data={data} />
-        </MainContainer>
-      </GridContainer>
+      <ThemeProvider>
+        <GlobalStyles />
+        <GridContainer>
+          <Top handleClick={toggleTheme} darkmode={darkmode} />
+          <MainContainer>
+            <Form />
+            <OutputTest setData={setData} data={data} />
+          </MainContainer>
+        </GridContainer>
+      </ThemeProvider>
     </Fragment>
   );
 }

@@ -3,10 +3,10 @@ import LogoColor from "./LogoColor";
 import StyledHeader from "./StyledHeader";
 import BurgerButton from "./BurgerButton";
 
-export default function Top({ handleClick, darkmode }) {
+export default function Top({ darkmode }) {
   return (
     <StyledHeader>
-      <BurgerButton onClick={handleClick} />
+      <BurgerButton />
       <h1>KeepIT</h1>
       <LogoColor darkmode={darkmode} />
     </StyledHeader>
