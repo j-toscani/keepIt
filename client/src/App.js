@@ -35,7 +35,9 @@ function App() {
   }
 
   React.useEffect(() => {
-    fetchList("/notes").then(response => setData(response));
+    fetchList("http://localhost:5000/notes").then(response =>
+      setData(response)
+    );
   }, []);
 
   return (

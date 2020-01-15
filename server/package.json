@@ -8,7 +8,7 @@
     "format": "prettier \"./lib/*.js\" --write && prettier \"*.js\" --write && prettier \"client/src/**/*.{js,html,css}\" --write",
     "start:client": "npm run start --prefix ../client",
     "start:server": "nodemon server.js",
-    "dev": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "dev": "concurrently \"npm run start:server\" \"npm run start:client --prefix ../client \"",
     "lint:server": "eslint \"*.js\" && eslint \"./lib/*.js\"",
     "lint:client": "eslint client/src/**/*.js --quiet",
     "lint": "npm run lint:server && npm run lint:client",
@@ -39,6 +39,7 @@
     "prettier": "^1.19.1"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.4.1"
