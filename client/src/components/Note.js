@@ -8,7 +8,9 @@ export default function Note({ entry, setData }) {
         <li>{entry._id}</li>
         <li>{entry.name}</li>
         <li>{entry.content}</li>
-        <li>{(entry.published.date, entry.published.dateTime)}</li>
+        {Note.published && (
+          <li>{(entry.published.date, entry.published.dateTime)}</li>
+        )}
       </ul>
       <button
         onClick={() => {

@@ -47,6 +47,5 @@
     "eslint-plugin-react": "^7.17.0",
     "parcel-bundler": "^1.12.4",
     "react-test-renderer": "^16.12.0"
-  },
-  "proxy": "http://localhost:5000"
+  }
 }
