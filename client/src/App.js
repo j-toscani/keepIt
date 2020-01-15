@@ -9,6 +9,8 @@ import GlobalStyles from "./GlobalStyles";
 
 import { fetchList } from "./api/notes";
 
+//Task: add theming
+
 function App() {
   const [darkmode, setDarkmode] = useState(false);
   const [data, setData] = useState(null);
