@@ -74,6 +74,7 @@ const Options = () => (
     css={css`
       flex-grow: 1;
       margin: 1px;
+      fill: "blue";
     `}
   ></UnstyledOptions>
 );

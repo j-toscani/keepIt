@@ -22,8 +22,10 @@ function App() {
     fetchList("http://localhost:5000/notes").then(
       response => setData(response),
       () => {
-        setData(["waiting for Data"]);
-        console.log("something went wrong");
+        //on reject
+        const notification = "No Data recieved...";
+        setData(notification);
+        alert(notification);
       }
     );
   }, []);

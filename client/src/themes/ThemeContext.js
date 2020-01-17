@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import colorTheme from "./colorTheme";
 import darkTheme from "./darkTheme";
 
@@ -14,10 +14,10 @@ export default function ThemeProvider({ children }) {
     setDarkThemeActive(!darkThemeActive);
   }
 
-  const activeTheme = darkThemeActive ? darkTheme : colorTheme;
+  const theme = darkThemeActive ? darkTheme : colorTheme;
 
   return (
-    <ThemeContext.Provider value={{ theme: activeTheme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

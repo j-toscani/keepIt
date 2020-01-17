@@ -6,8 +6,6 @@ import { ThemeContext } from "../themes/ThemeContext";
 export default function BurgerButton() {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
-  console.log(theme);
-
   return (
     <button
       onClick={toggleTheme}
@@ -21,6 +19,8 @@ export default function BurgerButton() {
         justify-content: center;
         background: none;
         border: none;
+        border-radius: 5px;
+        background: ${theme.mainFont};
       `}
     >
       <Options />
