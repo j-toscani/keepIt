@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { css } from "@emotion/core";
 import Options from "../ressources/Options";
+import { ThemeContext } from "../themes/ThemeContext";
 
-export default function BurgerButton({ onClick }) {
+export default function BurgerButton() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
     <button
-      onClick={onClick}
+      onClick={toggleTheme}
       css={css`
         height: 40px;
         width: 40px;
@@ -16,6 +19,8 @@ export default function BurgerButton({ onClick }) {
         justify-content: center;
         background: none;
         border: none;
+        border-radius: 5px;
+        background: ${theme.mainFont};
       `}
     >
       <Options />

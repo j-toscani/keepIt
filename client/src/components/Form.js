@@ -1,14 +1,14 @@
-/** @jsx jsx */
-
-import { Fragment, useState } from "react";
-import { css, jsx } from "@emotion/core";
+import React, { Fragment, useState, useContext } from "react";
+import { css } from "@emotion/core";
 
 import SmallTextInput from "./formComponents/SmallTextInput";
 import TagInput from "./formComponents/TagInput";
 import SubmitButton from "./formComponents/SubmitButton";
+import { ThemeContext } from "../themes/ThemeContext";
 
 export default function Form() {
   const [noteInformation, setNoteInformation] = useState({});
+  const { theme } = useContext(ThemeContext);
 
   function getInputValue(attribute, value) {
     const newNoteInformation = { ...noteInformation };
@@ -17,11 +17,10 @@ export default function Form() {
   }
 
   return (
-    // change with styles
     <Fragment>
       <form
         css={css`
-          background: green;
+          background: ${theme.accent};
           max-width: 280px;
           min-height: 300px;
           margin: auto;
@@ -31,7 +30,7 @@ export default function Form() {
           align-items: center;
           flex-direction: column;
           border-radius: 10px;
-          color: black;
+          color: ${theme.mainFont};
         `}
       >
         <SmallTextInput handleChange={getInputValue} inputAttribute={"name"} />

@@ -8,6 +8,7 @@ import MainContainer from "./components/appContainer/MainContainer";
 import GlobalStyles from "./GlobalStyles";
 
 import { fetchList } from "./api/notes";
+import ThemeProvider from "./themes/ThemeContext";
 
 function App() {
   const [darkmode, setDarkmode] = useState(false);
@@ -21,21 +22,26 @@ function App() {
     fetchList("http://localhost:5000/notes").then(
       response => setData(response),
       () => {
-        setData(["waiting for Data"]);
+        //on reject
+        const notification = "No Data recieved...";
+        setData(notification);
+        alert(notification);
       }
     );
   }, []);
 
   return (
     <Fragment>
-      <GlobalStyles />
-      <GridContainer>
-        <Top handleClick={toggleTheme} darkmode={darkmode} />
-        <MainContainer>
-          <Form />
-          <OutputTest setData={setData} data={data} />
-        </MainContainer>
-      </GridContainer>
+      <ThemeProvider>
+        <GlobalStyles />
+        <GridContainer>
+          <Top handleClick={toggleTheme} darkmode={darkmode} />
+          <MainContainer>
+            <Form />
+            <OutputTest setData={setData} data={data} />
+          </MainContainer>
+        </GridContainer>
+      </ThemeProvider>
     </Fragment>
   );
 }
