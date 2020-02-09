@@ -12,15 +12,14 @@ export default function BurgerButton() {
       css={css`
         height: 40px;
         width: 40px;
-        padding: 5px;
-        margin: 5px;
+        padding: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         background: none;
-        border: none;
+        border: 0;
         border-radius: 5px;
-        background: ${theme.mainFont};
+        background: ${theme.contrast};
       `}
     >
       <Options />

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { css } from "@emotion/core";
+import { ThemeContext } from "../themes/ThemeContext";
 
 function UnstyledOptions({ className }) {
   return (
@@ -69,14 +70,19 @@ function UnstyledOptions({ className }) {
   );
 }
 
-const Options = () => (
-  <UnstyledOptions
-    css={css`
-      flex-grow: 1;
-      margin: 1px;
-      fill: "blue";
-    `}
-  ></UnstyledOptions>
-);
+const Options = () => {
+  const { theme } = useContext(ThemeContext);
+  return (
+    <UnstyledOptions
+      css={css`
+        flex-grow: 1;
+        margin: 1px;
+        background: transparent;
+        margin: 5px;
+        fill: ${theme.accent};
+      `}
+    ></UnstyledOptions>
+  );
+};
 
 export default Options;

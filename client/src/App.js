@@ -1,11 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Top from "./components/Top";
-import Form from "./components/Form";
-import OutputTest from "./components/OutputTest";
 import GridContainer from "./components/appContainer/GridContainer";
 import MainContainer from "./components/appContainer/MainContainer";
 import GlobalStyles from "./GlobalStyles";
+import AddNote from "./pages/AddNote";
+import Login from "./pages/Login";
+import Notes from "./pages/Notes";
+import Welcome from "./pages/Welcome";
 
 import { fetchList } from "./api/notes";
 import ThemeProvider from "./themes/ThemeContext";
@@ -35,11 +38,25 @@ function App() {
       <ThemeProvider>
         <GlobalStyles />
         <GridContainer>
-          <Top handleClick={toggleTheme} darkmode={darkmode} />
-          <MainContainer>
-            <Form />
-            <OutputTest setData={setData} data={data} />
-          </MainContainer>
+          <Router>
+            <Top handleClick={toggleTheme} darkmode={darkmode} />
+            <MainContainer>
+              <Switch>
+                <Route path="/login">
+                  <Login />
+                </Route>
+                <Route path="/addnote">
+                  <AddNote />
+                </Route>
+                <Route path="/notes">
+                  <Notes />
+                </Route>
+                <Route path="/home">
+                  <Welcome />
+                </Route>
+              </Switch>
+            </MainContainer>
+          </Router>
         </GridContainer>
       </ThemeProvider>
     </Fragment>
