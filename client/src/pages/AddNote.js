@@ -1,7 +1,10 @@
 import React from "react";
+import Form from "../components/Form";
 
 export default function AddNote() {
   return (
-    <div>{"You are at the AddNote Page. Should only work if logged in!"}</div>
+    <div>
+      <Form />
+    </div>
   );
 }
