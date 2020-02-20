@@ -1,7 +1,8 @@
 const colorTheme = {
-  main: "#F2D4AE",
-  contrast: "#BF9E75",
-  accent: "#402B18",
+  main: "#BF9E75",
+  contrast: "#402b18",
+  accent: "#F2D4AE",
+  mainInactive: "#514637",
   mainFont: "#FFFFFF",
   accentFont: "#000000"
 };

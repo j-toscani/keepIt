@@ -8,7 +8,7 @@ export default function StyledHeader({ children }) {
   return (
     <header
       css={css`
-        background: ${theme.accent};
+        background: ${theme.contrast};
         display: flex;
         padding: 20px;
         width: 100%;

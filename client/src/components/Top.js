@@ -1,12 +1,15 @@
 import React from "react";
 import LogoColor from "./LogoColor";
 import StyledHeader from "./StyledHeader";
-import BurgerButton from "./BurgerButton";
+import Button from "./Button";
+import Option from "../ressources/Options";
 
 export default function Top({ darkmode }) {
   return (
     <StyledHeader>
-      <BurgerButton />
+      <Button burgerButton>
+        <Option />
+      </Button>
       <h1>KeepIT</h1>
       <LogoColor darkmode={darkmode} />
     </StyledHeader>
