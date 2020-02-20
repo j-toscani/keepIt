@@ -1,10 +1,10 @@
 import React from "react";
-import BurgerButton from "../components/BurgerButton";
+import Button from "../components/Button";
 
 export default {
   title: "Buttons"
 };
 
 export const MenuButton = () => (
-  <BurgerButton handleClick={() => alert("Clicked!")} />
+  <Button handleClick={() => alert("Clicked!")} />
 );

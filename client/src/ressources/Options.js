@@ -75,11 +75,13 @@ const Options = () => {
   return (
     <UnstyledOptions
       css={css`
+        width: 25px;
+        height: 25px;
         flex-grow: 1;
         margin: 1px;
         background: transparent;
         margin: 5px;
-        fill: ${theme.accent};
+        fill: ${theme.contrast};
       `}
     ></UnstyledOptions>
   );
