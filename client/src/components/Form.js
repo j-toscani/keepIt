@@ -20,16 +20,15 @@ export default function Form() {
     <Fragment>
       <form
         css={css`
-          background: ${theme.accent};
+          background: ${theme.contrast};
           max-width: 280px;
-          min-height: 300px;
+          min-height: 420px;
           margin: auto;
           padding: 20px;
           display: flex;
           justify-content: space-around;
           align-items: center;
           flex-direction: column;
-          border-radius: 10px;
           color: ${theme.mainFont};
         `}
       >
