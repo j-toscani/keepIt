@@ -1,14 +1,19 @@
 import React, { useContext } from "react";
 import { css } from "@emotion/core";
-
 import { ThemeContext } from "../themes/ThemeContext";
 
-export default function Button({ children, burgerButton }) {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+export default function Button({
+  handleClick,
+
+  children,
+  burgerButton
+}) {
+  const { theme } = useContext(ThemeContext);
 
   return (
     <button
-      onClick={toggleTheme}
+      onClick={handleClick}
+      onSubmit={handleClick}
       css={css`
         display: flex;
         align-items: center;

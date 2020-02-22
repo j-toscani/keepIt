@@ -6,11 +6,11 @@ export default function SubmitButton({ noteInformation }) {
   return (
     <Button
       type="submit"
-      onClick={e => {
+      handleClick={e => {
         e.preventDefault();
         createNewNote(noteInformation);
       }}
-      onSubmit={e => {
+      handleSubmit={e => {
         e.preventDefault();
         createNewNote(noteInformation);
       }}
