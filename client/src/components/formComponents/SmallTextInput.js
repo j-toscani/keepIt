@@ -1,12 +1,11 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import firstLetterToUppercase from "../../lib/capitalFirstLetter";
+import CapitalLetterLabel from "./CapitalLetterLabel";
 
 export default function SmallTextInput({
   handleChange,
   inputAttribute,
-  inputLabel,
-  placeholder
+  inputLabel
 }) {
   return (
     <div
@@ -16,15 +15,16 @@ export default function SmallTextInput({
         justify-content: space-between;
       `}
     >
-      <label htmlFor={inputAttribute}>
-        {inputLabel ? inputLabel : firstLetterToUppercase(inputAttribute)}
-      </label>
+      <CapitalLetterLabel
+        inputAttribute={inputAttribute}
+        inputLabel={inputLabel}
+      />
       <input
         css={css`
-          max-width: 80px;
+          max-width: 120px;
         `}
         name={inputAttribute}
-        placeholder={placeholder ? placeholder : inputAttribute}
+        placeholder={inputAttribute}
         onChange={event => handleChange(inputAttribute, event.target.value)}
       ></input>
     </div>

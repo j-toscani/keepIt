@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import firstLetterToUppercase from "../../lib/capitalFirstLetter";
+import CapitalLetterLabel from "./CapitalLetterLabel";
 
 export default function TagInput({
   handleChange,
@@ -16,9 +16,10 @@ export default function TagInput({
         justify-content: space-between;
       `}
     >
-      <label htmlFor={inputAttribute}>
-        {inputLabel ? inputLabel : firstLetterToUppercase(inputAttribute)}
-      </label>
+      <CapitalLetterLabel
+        inputAttribute={inputAttribute}
+        inputLabel={inputLabel}
+      />
       <input
         css={css`
           max-width: 80px;

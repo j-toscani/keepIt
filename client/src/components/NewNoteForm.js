@@ -6,7 +6,7 @@ import TagInput from "./formComponents/TagInput";
 import SubmitButton from "./formComponents/SubmitButton";
 import { ThemeContext } from "../themes/ThemeContext";
 
-export default function Form() {
+export default function NewNoteForm() {
   const [noteInformation, setNoteInformation] = useState({});
   const { theme } = useContext(ThemeContext);
 

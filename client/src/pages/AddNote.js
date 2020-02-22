@@ -1,10 +1,10 @@
 import React from "react";
-import Form from "../components/Form";
+import NewNoteForm from "../components/NewNoteForm";
 
 export default function AddNote() {
   return (
     <div>
-      <Form />
+      <NewNoteForm />
     </div>
   );
 }
