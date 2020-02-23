@@ -5,7 +5,7 @@ import { css } from "@emotion/core";
 
 import LoginForm from "../components/loginAndRegistryComponents/LoginForm";
 import RegistryForm from "../components/loginAndRegistryComponents/RegistryForm";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import CategoryBumper from "../components/loginAndRegistryComponents/CategoryBumper";
 
 export default function Login() {
@@ -26,7 +26,7 @@ export default function Login() {
     >
       <div
         css={css`
-          top: -25px;
+          top: -40px;
           left: 0;
           display: flex;
           align-items: center;
@@ -35,14 +35,14 @@ export default function Login() {
           position: absolute;
         `}
       >
-        <CategoryBumper path={"/login/logMeIn"} content={"Login..."} />
-        <CategoryBumper path={"/login/regMeNow"} content={"Register..."} />
+        <CategoryBumper path={"/auth/login"} content={"Login..."} />
+        <CategoryBumper path={"/auth/register"} content={"Register..."} />
       </div>
       <Switch>
-        <Route exact path="/login/logMeIn">
+        <Route exact path="/auth/login">
           <LoginForm />
         </Route>
-        <Route exact path="/login/regMeNow">
+        <Route exact path="/auth/register">
           <RegistryForm />
         </Route>
       </Switch>

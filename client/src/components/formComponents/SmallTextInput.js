@@ -7,6 +7,7 @@ export default function SmallTextInput({
   handleChange,
   inputAttribute,
   inputLabel,
+  type,
   placeholder
 }) {
   const altPlaceholder = firstLetterToUppercase(inputAttribute);
@@ -16,6 +17,7 @@ export default function SmallTextInput({
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
       `}
     >
       <CapitalLetterLabel
@@ -25,7 +27,9 @@ export default function SmallTextInput({
       <input
         css={css`
           max-width: 120px;
+          margin-left: 10px;
         `}
+        type={type}
         name={inputAttribute}
         placeholder={placeholder ? placeholder : altPlaceholder}
         onChange={event => handleChange(inputAttribute, event.target.value)}

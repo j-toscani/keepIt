@@ -14,24 +14,33 @@ export default function RegistryForm() {
   }
 
   return (
-    <form>
+    <form
+      css={css`
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      `}
+    >
       <SmallTextInput
+        type={"email"}
         inputAttribute={"mail"}
         placeholder={"Enter your Mail..."}
-        handleChange={(a, b) => console.log(a, b)}
+        handleChange={getInputValue}
       />
       <SmallTextInput
-        inputAttribute={"Password"}
-        placeholder={"Enter your Password..."}
-        handleChange={(a, b) => console.log(a, b)}
-      />
-      <SmallTextInput
+        type={"password"}
         inputAttribute={"password"}
-        inputLabel={"Confirm Password"}
-        placeholder={"Enter your password..."}
-        handleChange={(a, b) => console.log(a, b)}
+        placeholder={"Enter your Password..."}
+        handleChange={getInputValue}
       />
-      <Button onClick={() => alert("You are gettin logged in...")}>
+      <SmallTextInput
+        type={"password"}
+        inputAttribute={"confirm"}
+        placeholder={"Enter your password..."}
+        handleChange={getInputValue}
+      />
+      <Button handleClick={() => alert("You are gettin logged in...")}>
         {"Register..."}
       </Button>
     </form>

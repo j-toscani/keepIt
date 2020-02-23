@@ -14,18 +14,33 @@ export default function LoginForm() {
   }
 
   return (
-    <form>
+    <form
+      css={css`
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      `}
+    >
       <SmallTextInput
+        type={"email"}
         inputAttribute={"mail"}
         placeholder={"Enter your Mail..."}
-        handleChange={(a, b) => console.log(a, b)}
+        handleChange={getInputValue}
       />
       <SmallTextInput
+        type={"password"}
         inputAttribute={"Password"}
         placeholder={"Enter your Password..."}
-        handleChange={(a, b) => console.log(a, b)}
+        handleChange={getInputValue}
       />
-      <Button onClick={() => alert("You are gettin logged in...")}>
+      <Button
+        handleClick={e => {
+          debugger;
+          e.preventDefault();
+          alert("You are gettin logged in...");
+        }}
+      >
         {"Log in..."}
       </Button>
     </form>

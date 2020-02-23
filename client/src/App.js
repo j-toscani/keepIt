@@ -42,7 +42,7 @@ function App() {
             <Top handleClick={toggleTheme} darkmode={darkmode} />
             <MainContainer>
               <Switch>
-                <Route path="/login">
+                <Route path="/auth">
                   <Login />
                 </Route>
                 <Route path="/addnote">
