@@ -1,20 +1,21 @@
 import React from "react";
 import createNewNote from "../../lib/createNewNote";
+import Button from "../Button";
 
 export default function SubmitButton({ noteInformation }) {
   return (
-    <button
+    <Button
       type="submit"
-      onClick={e => {
+      handleClick={e => {
         e.preventDefault();
         createNewNote(noteInformation);
       }}
-      onSubmit={e => {
+      handleSubmit={e => {
         e.preventDefault();
         createNewNote(noteInformation);
       }}
     >
       Submit
-    </button>
+    </Button>
   );
 }
