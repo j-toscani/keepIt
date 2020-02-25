@@ -1,6 +1,6 @@
 import React from "react";
-import SmallTextInput from "../components/formComponents/SmallTextInput";
-import SmallTextInput from "../components/formComponents/CapitalLetterLabel";
+import SmallTextInput from "../src/components/formComponents/SmallTextInput";
+import CapitalLetterLabel from "../src/components/formComponents/CapitalLetterLabel";
 
 export default {
   title: "Form Elements"

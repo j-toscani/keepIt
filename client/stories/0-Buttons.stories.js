@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../components/Button";
-import Option from "../ressources/Options";
+import Button from "../src/components/Button";
+import Option from "../src/ressources/Options";
 
 export default {
   title: "Buttons"
