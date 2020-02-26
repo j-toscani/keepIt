@@ -6,13 +6,16 @@ export default function SubmitButton({ noteInformation }) {
   return (
     <Button
       type="submit"
-      handleClick={e => {
+      handleClick={async e => {
         e.preventDefault();
-        createNewNote(noteInformation);
+        createNewNote(noteInformation).then(response => console.log(response));
       }}
-      handleSubmit={e => {
+      handleSubmit={async e => {
         e.preventDefault();
-        createNewNote(noteInformation);
+        createNewNote(noteInformation).then(
+          () => console.log("sending data was successful"),
+          () => console.log("creating note was unsseccessful")
+        );
       }}
     >
       Submit
