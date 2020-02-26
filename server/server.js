@@ -26,11 +26,12 @@ app.get(`/notes`, async (request, response) => {
 
 app.post(`/notes`, async (request, response) => {
   try {
-    const newNote = await setNewNote(request.body);
-    console.log("NewNote set");
-    return response.json(newNote);
+    setNewNote(request.body).then(newNote => {
+      response.send(newNote);
+      console.log(newNote);
+    });
   } catch (error) {
-    return response.end("Error");
+    return response.body.end("Error");
   }
 });
 

@@ -5,8 +5,8 @@ const collectionName = "notes";
 
 async function setNewNote(note) {
   const noteCollection = await getCollection(collectionName);
-  const setNote = await noteCollection.insertOne(note);
-  return setNote;
+  await noteCollection.insertOne(note);
+  return note;
 }
 
 async function getNoteList() {
