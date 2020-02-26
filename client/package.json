@@ -14,8 +14,8 @@
   "scripts": {
     "start": "parcel src/index.html --port 3000",
     "build": "parcel build src/index.js",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook --quiet -c .storybook",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
     "lint": "eslint src/**/*.js"
   },
   "eslintConfig": {
@@ -38,11 +38,11 @@
     "@babel/plugin-proposal-class-properties": "^7.8.0",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.0",
-    "@storybook/addon-actions": "^5.3.14",
-    "@storybook/addon-links": "^5.3.14",
-    "@storybook/addons": "^5.3.14",
-    "@storybook/react": "^5.3.14",
-    "babel-eslint": "^10.1.0",
+    "@storybook/addon-actions": "^5.3.13",
+    "@storybook/addon-links": "^5.3.13",
+    "@storybook/addons": "^5.3.13",
+    "@storybook/react": "^5.3.13",
+    "babel-eslint": "^10.0.3",
     "babel-plugin-transform-node-env-inline": "^0.4.3",
     "babel-preset-react-app": "^9.1.1",
     "eslint": "^6.8.0",
