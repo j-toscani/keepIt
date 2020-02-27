@@ -22,8 +22,9 @@ export const TextInput = () => (
 );
 
 export const Label = () => (
-  <CapitalLetterLabel
-    inputLabel={"Display Label"}
-    inputAttribute={"ID for the input Tag"}
-  />
+  <CapitalLetterLabel inputLabel={"label"} inputAttribute={"attribute"} />
+);
+
+export const LabelWithoutLabel = () => (
+  <CapitalLetterLabel inputAttribute={"attribute"} />
 );
