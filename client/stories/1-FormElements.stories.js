@@ -1,6 +1,5 @@
 import React from "react";
 import SmallTextInput from "../src/components/formComponents/SmallTextInput";
-import CapitalLetterLabel from "../src/components/formComponents/CapitalLetterLabel";
 
 export default {
   title: "Form Elements"
@@ -21,10 +20,3 @@ export const TextInput = () => (
   </div>
 );
 
-export const Label = () => (
-  <CapitalLetterLabel inputLabel={"label"} inputAttribute={"attribute"} />
-);
-
-export const LabelWithoutLabel = () => (
-  <CapitalLetterLabel inputAttribute={"attribute"} />
-);
