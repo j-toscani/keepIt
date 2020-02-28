@@ -17,12 +17,10 @@ export default function SmallTextInput({
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
       `}
     >
-      <CapitalLetterLabel
-        inputAttribute={inputAttribute}
-      />
+      <CapitalLetterLabel inputAttribute={inputAttribute} />
       <input
         css={css`
           max-width: 120px;

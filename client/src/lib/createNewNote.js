@@ -28,6 +28,6 @@ export default async function createNewNote(formData) {
       return err;
     }
   } else {
-    alert("Please enter content and a headline to your note.");
+    alert("Please enter content and a name to your note.");
   }
 }

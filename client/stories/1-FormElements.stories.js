@@ -1,6 +1,7 @@
 import React from "react";
 import SmallTextInput from "../src/components/formComponents/SmallTextInput";
 import Form from "../src/components/Form";
+import { css } from "@emotion/core";
 
 export default {
   title: "Form Elements"
@@ -23,23 +24,39 @@ export const TextInput = () => (
 
 const inputElements = [
   {
-    placeholder: "Name",
-    attribute:"name",
+    placeholder: "Name your note",
+    attribute: "name",
     type: "text",
     HTMLInputType: "text"
   },
   {
-    placeholder: "Password",
-    attribute:"password",
-    HTMLInputType: "password",
+    placeholder: "E.g. : Tag1; Tag2 ...",
+    attribute: "tags",
+    HTMLInputType: "text",
+    seperator: ";",
     type: "text"
   },
   {
-    placeholder: "Tags",
-    attribute:"tags",
-    HTMLInputType: "text",
-    type: "tag"
+    placeholder: "Put your Content here!",
+    attribute: "content",
+    type: "textArea",
+    label: "Content"
   }
-]
+];
 
-export const FormTest = () => <Form inputElements={inputElements}/>;
+export const FormTest = () => {
+  return (
+    <div
+      css={css`
+        max-width: 280px;
+        min-height: 420px;
+        margin: auto;
+        background: #402b18;
+        padding: 15px;
+        padding-top: 40px;
+      `}
+    >
+      <Form inputElements={inputElements} buttonContent={"Add Note!"} />
+    </div>
+  );
+};

@@ -1,12 +1,11 @@
-//Create generic form component for "NewNote" and "Regist/Login" forms
-
 import React, { useState, useContext } from "react";
 import { css } from "@emotion/core";
 import Button from "./Button";
 import { ThemeContext } from "../themes/ThemeContext";
 import SmallTextInput from "./formComponents/SmallTextInput";
+import ContentArea from "./formComponents/ContentArea";
 
-export default function Form( {inputElements}) {
+export default function Form({ inputElements, onFormSubmit, buttonContent }) {
   const [noteInformation, setNoteInformation] = useState({});
   const { theme } = useContext(ThemeContext);
 
@@ -28,37 +27,70 @@ export default function Form( {inputElements}) {
 
   return (
     <form
-      autocomplete="off"
+      autoComplete="off"
       css={css`
         background: ${theme.contrast};
-        max-width: 300px;
         display: flex;
         flex-direction: column;
-        margin: auto;
-        padding: 10px;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
+        height: 100%;
+        width: 100%;
+        padding-top: 30px;
         color: ${theme.mainFont};
       `}
     >
-      {inputElements && inputElements.map((inputElement) => {
-          const {type, attribute, placeholder} = inputElement;
-          if ( !type || !attribute || !placeholder){
-              throw console.error("Missing formelement information!");
+      {inputElements &&
+        inputElements.map(inputElement => {
+          const { type, attribute, placeholder } = inputElement;
+          if (!type || !attribute || !placeholder) {
+            throw console.error(
+              "Missing formelement information for inputElement: ",
+              type
+            );
+          } else if (type === "text") {
+            return (
+              <SmallTextInput
+                key={attribute}
+                handleChange={createGetInputValue()}
+                inputAttribute={attribute}
+                placeholder={placeholder}
+                type={
+                  inputElement.HTMLInputType ? inputElement.HTMLInputType : ""
+                }
+              />
+            );
+          } else if (type === "tag") {
+            return (
+              <SmallTextInput
+                key={attribute}
+                handleChange={createGetInputValue(inputElement.seperator)}
+                inputAttribute={attribute}
+                placeholder={placeholder}
+                type={
+                  inputElement.HTMLInputType ? inputElement.HTMLInputType : ""
+                }
+              />
+            );
+          } else if (type === "textArea" || "textarea") {
+            return (
+              <ContentArea
+                key={attribute}
+                handleChange={createGetInputValue()}
+                inputAttribute={attribute}
+                placeholder={placeholder}
+                inputLabel={inputElement.label ? inputElement.label : false}
+              />
+            );
           }
-          else if (type === "text"){
-              return <SmallTextInput handleChange={createGetInputValue()} inputAttribute={attribute} placeholder={placeholder} type={inputElement.HTMLInputType ? inputElement.HTMLInputType : ""}/>
-          } else if (type === "tag"){
-            return <SmallTextInput handleChange={createGetInputValue(inputElement.seperator)} inputAttribute={attribute} placeholder={placeholder} type={inputElement.HTMLInputType ? inputElement.HTMLInputType : ""}/>
-          }
-      })}
+        })}
       <Button
         handleClick={e => {
           e.preventDefault();
-          alert("You are gettin logged in...");
+          onFormSubmit();
         }}
       >
-        {"Log in..."}
+        {buttonContent}
       </Button>
     </form>
   );

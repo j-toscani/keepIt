@@ -26,6 +26,7 @@ export default function Button({ handleClick, children, burgerButton }) {
           : css`
               padding: 10px;
               margin: 10px;
+              margin-top: auto;
               box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
             `};
       `}

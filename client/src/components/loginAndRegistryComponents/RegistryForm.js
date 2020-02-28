@@ -1,48 +1,41 @@
-/** @jsx jsx */
-import { useState } from "react";
-import { css, jsx } from "@emotion/core";
-import SmallTextInput from "../formComponents/SmallTextInput";
-import Button from "../Button";
+import React, { useContext } from "react";
+import { css } from "@emotion/core";
+import { ThemeContext } from "../../themes/ThemeContext";
 
-export default function RegistryForm() {
-  const [registerInformation, setRegisterInformation] = useState({});
+import Form from "../Form";
 
-  function getInputValue(attribute, value) {
-    const newRegisterInformation = { ...registerInformation };
-    newRegisterInformation[attribute] = value;
-    setRegisterInformation(newRegisterInformation);
-  }
+export default function LoginForm() {
+  const { theme } = useContext(ThemeContext);
+  const inputElements = [
+    {
+      placeholder: "E-Mail...",
+      attribute: "email",
+      type: "text",
+      HTMLInputType: "email"
+    },
+    {
+      placeholder: "Password...",
+      attribute: "password",
+      type: "text",
+      HTMLInputType: "password"
+    },
+    {
+      placeholder: "Confirm...",
+      attribute: "confirm",
+      type: "text",
+      HTMLInputType: "password"
+    }
+  ];
 
   return (
-    <form
+    <div
       css={css`
-        height: 160px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        padding: 10px;
+        height: 100%;
+        background: ${theme.contrast};
       `}
     >
-      <SmallTextInput
-        type={"email"}
-        inputAttribute={"mail"}
-        placeholder={"Enter your Mail..."}
-        handleChange={getInputValue}
-      />
-      <SmallTextInput
-        type={"password"}
-        inputAttribute={"password"}
-        placeholder={"Enter your Password..."}
-        handleChange={getInputValue}
-      />
-      <SmallTextInput
-        type={"password"}
-        inputAttribute={"confirm"}
-        placeholder={"Enter your password..."}
-        handleChange={getInputValue}
-      />
-      <Button handleClick={() => alert("You are gettin logged in...")}>
-        {"Register..."}
-      </Button>
-    </form>
+      <Form inputElements={inputElements} buttonContent={"Register..."} />
+    </div>
   );
 }
