@@ -36,7 +36,6 @@ export default function LoginForm() {
       />
       <Button
         handleClick={e => {
-          debugger;
           e.preventDefault();
           alert("You are gettin logged in...");
         }}

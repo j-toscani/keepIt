@@ -1,5 +1,6 @@
 import React from "react";
 import SmallTextInput from "../src/components/formComponents/SmallTextInput";
+import Form from "../src/components/Form";
 
 export default {
   title: "Form Elements"
@@ -19,4 +20,8 @@ export const TextInput = () => (
     />
   </div>
 );
+
+export const FormTest = () => (
+  <Form/>
+)
 
