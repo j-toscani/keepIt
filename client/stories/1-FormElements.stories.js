@@ -21,7 +21,25 @@ export const TextInput = () => (
   </div>
 );
 
-export const FormTest = () => (
-  <Form/>
-)
+const inputElements = [
+  {
+    placeholder: "Name",
+    attribute:"name",
+    type: "text",
+    HTMLInputType: "text"
+  },
+  {
+    placeholder: "Password",
+    attribute:"password",
+    HTMLInputType: "password",
+    type: "text"
+  },
+  {
+    placeholder: "Tags",
+    attribute:"tags",
+    HTMLInputType: "text",
+    type: "tag"
+  }
+]
 
+export const FormTest = () => <Form inputElements={inputElements}/>;
