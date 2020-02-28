@@ -1,0 +1,1 @@
+//Create generic form component for "NewNote" and "Regist/Login" forms
