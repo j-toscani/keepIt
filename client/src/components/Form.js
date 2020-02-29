@@ -27,6 +27,7 @@ export default function Form({ inputElements, onFormSubmit, buttonContent }) {
 
   return (
     <form
+      onSubmit={() => onFormSubmit(noteInformation)}
       autoComplete="off"
       css={css`
         background: ${theme.contrast};
@@ -85,9 +86,15 @@ export default function Form({ inputElements, onFormSubmit, buttonContent }) {
           }
         })}
       <Button
+        css={css`
+          padding: 10px;
+          font-size: 16px;
+          margin-top: auto;
+          margin-bottom: 20px;
+        `}
         handleClick={e => {
           e.preventDefault();
-          onFormSubmit();
+          onFormSubmit(noteInformation);
         }}
       >
         {buttonContent}

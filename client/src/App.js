@@ -51,7 +51,7 @@ function App() {
                 <Route path="/notes">
                   <Notes />
                 </Route>
-                <Route path="/home">
+                <Route exact path="/">
                   <Welcome />
                 </Route>
               </Switch>

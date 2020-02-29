@@ -1,11 +1,24 @@
 import React, { useContext } from "react";
 import { css } from "@emotion/core";
 import { ThemeContext } from "../../themes/ThemeContext";
+import { useHistory } from "react-router-dom";
 
 import Form from "../Form";
 
 export default function LoginForm() {
   const { theme } = useContext(ThemeContext);
+  let history = useHistory();
+
+  function goToNotes() {
+    history.push("/notes");
+  }
+
+  function handleFormSubmit(formData) {
+    console.log(formData);
+    alert(`You entered: ${JSON.stringify(formData)}.`);
+    goToNotes();
+  }
+
   const inputElements = [
     {
       placeholder: "E-Mail...",
@@ -29,7 +42,11 @@ export default function LoginForm() {
         background: ${theme.contrast};
       `}
     >
-      <Form inputElements={inputElements} buttonContent={"Log in..."} />
+      <Form
+        inputElements={inputElements}
+        onFormSubmit={handleFormSubmit}
+        buttonContent={"Log in..."}
+      />
     </div>
   );
 }
