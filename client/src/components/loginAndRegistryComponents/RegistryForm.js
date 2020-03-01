@@ -35,7 +35,11 @@ export default function LoginForm() {
         background: ${theme.contrast};
       `}
     >
-      <Form inputElements={inputElements} buttonContent={"Register..."} />
+      <Form
+        action={"/auth/register"}
+        inputElements={inputElements}
+        buttonContent={"Register..."}
+      />
     </div>
   );
 }

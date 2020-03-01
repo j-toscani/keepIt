@@ -5,7 +5,12 @@ import { ThemeContext } from "../themes/ThemeContext";
 import SmallTextInput from "./formComponents/SmallTextInput";
 import ContentArea from "./formComponents/ContentArea";
 
-export default function Form({ inputElements, onFormSubmit, buttonContent }) {
+export default function Form({
+  inputElements,
+  onFormSubmit,
+  buttonContent,
+  action
+}) {
   const [noteInformation, setNoteInformation] = useState({});
   const { theme } = useContext(ThemeContext);
 
@@ -28,6 +33,7 @@ export default function Form({ inputElements, onFormSubmit, buttonContent }) {
   return (
     <form
       onSubmit={() => onFormSubmit(noteInformation)}
+      action={action}
       autoComplete="off"
       css={css`
         background: ${theme.contrast};

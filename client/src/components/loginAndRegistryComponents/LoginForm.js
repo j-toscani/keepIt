@@ -43,6 +43,7 @@ export default function LoginForm() {
       `}
     >
       <Form
+        action={"/auth/login"}
         inputElements={inputElements}
         onFormSubmit={handleFormSubmit}
         buttonContent={"Log in..."}
