@@ -29,7 +29,7 @@ export default function AddNote() {
       >
         <Cross
           css={css`
-            fill: #f2d4ae;
+            fill: ${theme.contrast};
             transform: rotate(45deg);
           `}
         ></Cross>
