@@ -4,9 +4,17 @@ import { css } from "@emotion/core";
 import { ThemeContext } from "../themes/ThemeContext";
 import Button from "../components/Button";
 import Cross from "../ressources/Cross";
+import { useHistory } from "react-router-dom";
 
 export default function AddNote() {
   const { theme } = useContext(ThemeContext);
+
+  let history = useHistory();
+
+  function goToBackNotes() {
+    history.push("/notes");
+  }
+
   return (
     <div
       css={css`
@@ -20,16 +28,17 @@ export default function AddNote() {
         css={css`
           border-radius: 50px;
           padding: 5px;
-          background: #402b18;
-          border: 1px solid #f2d4ae;
+          background: ${theme.contrast};
+          border: 1px solid ${theme.accent};
           position: absolute;
           right: -18px;
           top: -18px;
         `}
+        handleClick={goToBackNotes}
       >
         <Cross
           css={css`
-            fill: ${theme.contrast};
+            fill: ${theme.accent};
             transform: rotate(45deg);
           `}
         ></Cross>

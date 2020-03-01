@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { css } from "@emotion/core";
 import { ThemeContext } from "../themes/ThemeContext";
-
 import Form from "./Form";
 
 export default function NewNoteForm() {
   const { theme } = useContext(ThemeContext);
+
   const inputElements = [
     {
       placeholder: "Name your note",
