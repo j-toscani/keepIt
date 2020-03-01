@@ -1,6 +1,7 @@
 import React from "react";
 import SmallTextInput from "../src/components/formComponents/SmallTextInput";
-import CapitalLetterLabel from "../src/components/formComponents/CapitalLetterLabel";
+import Form from "../src/components/Form";
+import { css } from "@emotion/core";
 
 export default {
   title: "Form Elements"
@@ -21,10 +22,42 @@ export const TextInput = () => (
   </div>
 );
 
-export const Label = () => (
-  <CapitalLetterLabel inputLabel={"label"} inputAttribute={"attribute"} />
-);
+const inputElements = [
+  {
+    placeholder: "Name your note",
+    attribute: "name",
+    type: "text",
+    HTMLInputType: "text"
+  },
 
-export const LabelWithoutLabel = () => (
-  <CapitalLetterLabel inputAttribute={"attribute"} />
-);
+  {
+    placeholder: "Put your Content here!",
+    attribute: "content",
+    type: "textArea",
+    label: "Content"
+  },
+  {
+    placeholder: "E.g. : Tag1; Tag2 ...",
+    attribute: "tags",
+    HTMLInputType: "text",
+    seperator: ";",
+    type: "text"
+  }
+];
+
+export const FormTest = () => {
+  return (
+    <div
+      css={css`
+        max-width: 280px;
+        min-height: 420px;
+        margin: auto;
+        background: #402b18;
+        padding: 15px;
+        padding-top: 40px;
+      `}
+    >
+      <Form inputElements={inputElements} buttonContent={"Add Note!"} />
+    </div>
+  );
+};

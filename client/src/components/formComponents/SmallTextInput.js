@@ -6,7 +6,6 @@ import firstLetterToUppercase from "../../lib/capitalFirstLetter";
 export default function SmallTextInput({
   handleChange,
   inputAttribute,
-  inputLabel,
   type,
   placeholder
 }) {
@@ -16,18 +15,16 @@ export default function SmallTextInput({
       css={css`
         width: 100%;
         display: flex;
+        flex-flow: wrap;
         justify-content: space-between;
         align-items: center;
       `}
     >
-      <CapitalLetterLabel
-        inputAttribute={inputAttribute}
-        inputLabel={inputLabel}
-      />
+      <CapitalLetterLabel inputAttribute={inputAttribute} />
       <input
         css={css`
-          max-width: 120px;
-          margin-left: 10px;
+          width: 100%;
+          margin-bottom: 10px;
         `}
         type={type}
         name={inputAttribute}
