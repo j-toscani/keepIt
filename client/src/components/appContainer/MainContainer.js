@@ -5,13 +5,15 @@ export default function MainContainer({ children }) {
   return (
     <main
       css={css`
-        margin: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-direction: column;
+        position: relative;
         overflow: auto;
         flex-wrap: wrap;
+        ::-webkit-scrollbar {
+          display: none;
+        }
       `}
     >
       {children}

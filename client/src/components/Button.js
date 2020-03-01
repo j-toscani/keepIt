@@ -2,12 +2,7 @@ import React, { useContext } from "react";
 import { css } from "@emotion/core";
 import { ThemeContext } from "../themes/ThemeContext";
 
-export default function Button({
-  handleClick,
-  children,
-  burgerButton,
-  className
-}) {
+export default function Button({ handleClick, children, className }) {
   const { theme } = useContext(ThemeContext);
 
   return (

@@ -13,6 +13,7 @@ export default function Note({ entry, setData }) {
       css={css`
         width: 200px;
         height: 240px;
+        margin: 10px;
       `}
     >
       <div
@@ -27,6 +28,9 @@ export default function Note({ entry, setData }) {
       >
         <label>{name}</label>
         <Button
+          css={css`
+            font-size: 12px;
+          `}
           handleClick={() => {
             deleteEntry("/notes", _id)
               .then(() =>
@@ -42,8 +46,9 @@ export default function Note({ entry, setData }) {
       <div
         css={css`
           padding: 10px;
-          height: 100%;
+
           width: 100%;
+          overflow: auto;
           background: ${theme.accent};
           color: ${theme.contrast};
         `}

@@ -25,7 +25,7 @@ export default function ContentArea({
       <textarea
         css={css`
           width: 100%;
-          height: 180px;
+          height: 120px;
           max-width: 340px;
           margin: 10px;
           resize: none;
