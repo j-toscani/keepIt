@@ -31,13 +31,9 @@ export default function Form({ inputElements, onFormSubmit, buttonContent }) {
       autoComplete="off"
       css={css`
         background: ${theme.contrast};
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
         height: 100%;
         width: 100%;
-        padding-top: 30px;
+        padding: 10px;
         color: ${theme.mainFont};
       `}
     >
@@ -89,8 +85,8 @@ export default function Form({ inputElements, onFormSubmit, buttonContent }) {
         css={css`
           padding: 10px;
           font-size: 16px;
-          margin-top: auto;
-          margin-bottom: 20px;
+          margin: auto;
+          margin-top: 20px;
         `}
         handleClick={e => {
           e.preventDefault();

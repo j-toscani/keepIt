@@ -14,17 +14,17 @@ export default function NewNoteForm() {
       HTMLInputType: "text"
     },
     {
+      placeholder: "Put your Content here!",
+      attribute: "content",
+      type: "textArea",
+      label: "Content"
+    },
+    {
       placeholder: "E.g.: Tag1; Tag2 ...",
       attribute: "tags",
       seperator: ";",
       HTMLInputType: "text",
       type: "text"
-    },
-    {
-      placeholder: "Put your Content here!",
-      attribute: "content",
-      type: "textArea",
-      label: "Content"
     }
   ];
 

@@ -29,18 +29,19 @@ const inputElements = [
     type: "text",
     HTMLInputType: "text"
   },
+
+  {
+    placeholder: "Put your Content here!",
+    attribute: "content",
+    type: "textArea",
+    label: "Content"
+  },
   {
     placeholder: "E.g. : Tag1; Tag2 ...",
     attribute: "tags",
     HTMLInputType: "text",
     seperator: ";",
     type: "text"
-  },
-  {
-    placeholder: "Put your Content here!",
-    attribute: "content",
-    type: "textArea",
-    label: "Content"
   }
 ];
 

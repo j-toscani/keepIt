@@ -14,7 +14,7 @@ export default function Login() {
   return (
     <div
       css={css`
-        height: 260px;
+        height: 320px;
         width: 260px;
         position: relative;
         background: ${theme.contrast};
