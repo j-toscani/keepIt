@@ -4,6 +4,7 @@ import Button from "../components/Button";
 import Cross from "../ressources/Cross";
 import { ThemeContext } from "../themes/ThemeContext";
 import { useHistory } from "react-router-dom";
+import Note from "../components/Note";
 
 export default function Notes() {
   const { theme } = useContext(ThemeContext);
@@ -12,14 +13,28 @@ export default function Notes() {
   function goToAddNotes() {
     history.push("/addnote");
   }
+
+  const entry = {
+    _id: 1,
+    name: "My Note...",
+    content:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero quisquam, nobis cumque quam similique tenetur cum minus temporibus rem est nisi, non, id ratione sed voluptate maiores earum repellendus vel."
+  };
+
+  const entryArray = [entry, entry, entry, entry, entry];
+
   return (
     <div
       css={css`
         width: 100%;
         height: 100%;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
       `}
     >
-      {"You are at the Notes Page. Should only show if not logged in!"}
+      {entryArray &&
+        entryArray.map((entry, index) => <Note key={index} entry={entry} />)}
       <Button
         css={css`
           border-radius: 50px;
