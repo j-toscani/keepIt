@@ -32,7 +32,7 @@ export default function NewNoteForm() {
     <div
       css={css`
         max-width: 280px;
-        min-height: 420px;
+        min-height: 380px;
         margin: auto;
         background: ${theme.contrast};
         padding: 15px;

@@ -9,6 +9,7 @@ export default function StyledHeader({ children }) {
     <header
       css={css`
         background: ${theme.contrast};
+        position: relative;
         display: flex;
         padding: 20px;
         width: 100%;

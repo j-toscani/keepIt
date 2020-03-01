@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Top from "./components/Top";
 import GridContainer from "./components/appContainer/GridContainer";
@@ -15,11 +15,9 @@ import ThemeProvider from "./themes/ThemeContext";
 
 function App() {
   const [darkmode, setDarkmode] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [location, setLocation] = useState(false);
   const [data, setData] = useState(null);
-
-  function toggleTheme() {
-    setDarkmode(!darkmode);
-  }
 
   useEffect(() => {
     fetchList("http://localhost:5000/notes").then(
@@ -39,7 +37,7 @@ function App() {
         <GlobalStyles />
         <GridContainer>
           <Router>
-            <Top handleClick={toggleTheme} darkmode={darkmode} />
+            <Top toggleOverlay={() => setOpen(!open)} darkmode={darkmode} />
             <MainContainer>
               <Switch>
                 <Route path="/auth">
@@ -49,7 +47,7 @@ function App() {
                   <AddNote />
                 </Route>
                 <Route path="/notes">
-                  <Notes />
+                  <Notes open={open} />
                 </Route>
                 <Route exact path="/">
                   <Welcome />
