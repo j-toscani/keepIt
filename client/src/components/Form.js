@@ -5,12 +5,7 @@ import { ThemeContext } from "../themes/ThemeContext";
 import SmallTextInput from "./formComponents/SmallTextInput";
 import ContentArea from "./formComponents/ContentArea";
 
-export default function Form({
-  inputElements,
-  onFormSubmit,
-  buttonContent,
-  action
-}) {
+export default function Form({ inputElements, onFormSubmit, buttonContent }) {
   const [noteInformation, setNoteInformation] = useState({});
   const { theme } = useContext(ThemeContext);
 
@@ -32,8 +27,11 @@ export default function Form({
 
   return (
     <form
-      onSubmit={() => onFormSubmit(noteInformation)}
-      action={action}
+      method="POST"
+      onSubmit={e => {
+        e.preventDefault();
+        onFormSubmit(noteInformation);
+      }}
       autoComplete="off"
       css={css`
         background: ${theme.contrast};
@@ -55,6 +53,7 @@ export default function Form({
             return (
               <SmallTextInput
                 key={attribute}
+                value={noteInformation[attribute]}
                 handleChange={createGetInputValue()}
                 inputAttribute={attribute}
                 placeholder={placeholder}
@@ -70,6 +69,7 @@ export default function Form({
                 handleChange={createGetInputValue(inputElement.seperator)}
                 inputAttribute={attribute}
                 placeholder={placeholder}
+                value={noteInformation[attribute]}
                 type={
                   inputElement.HTMLInputType ? inputElement.HTMLInputType : ""
                 }
@@ -79,6 +79,7 @@ export default function Form({
             return (
               <ContentArea
                 key={attribute}
+                value={noteInformation[attribute]}
                 handleChange={createGetInputValue()}
                 inputAttribute={attribute}
                 placeholder={placeholder}
@@ -94,10 +95,6 @@ export default function Form({
           margin: auto;
           margin-top: 20px;
         `}
-        handleClick={e => {
-          e.preventDefault();
-          onFormSubmit(noteInformation);
-        }}
       >
         {buttonContent}
       </Button>

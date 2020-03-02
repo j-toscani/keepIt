@@ -1,14 +1,16 @@
-/** @jsx jsx */
-import { css, jsx } from "@emotion/core";
+import React, { useState } from "react";
+import { css } from "@emotion/core";
 import firstLetterToUppercase from "../../lib/capitalFirstLetter";
 
 export default function ContentArea({
   handleChange,
   inputAttribute,
   inputLabel,
-  placeholder
+  placeholder,
+  value
 }) {
   const fallbackValue = firstLetterToUppercase(inputAttribute);
+  const [inputValue, setinputValue] = useState(value);
   return (
     <div
       css={css`
@@ -30,6 +32,8 @@ export default function ContentArea({
           margin: 10px;
           resize: none;
         `}
+        required
+        value={value}
         placeholder={
           placeholder ? placeholder : `Write your /"${fallbackValue}"/ here...`
         }

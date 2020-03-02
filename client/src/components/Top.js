@@ -10,7 +10,7 @@ import Cross from "../ressources/Cross";
 import { ThemeContext } from "../themes/ThemeContext";
 
 export default function Top({ darkmode, toggleOverlay }) {
-  const { toggleTheme, theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   const currentLocation = window.location.pathname;
   const onNewNotePage = currentLocation === "/addnote";

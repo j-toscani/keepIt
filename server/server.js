@@ -4,7 +4,8 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 
 const { initDatabase } = require("./db");
-const { getNoteList, setNewNote, deleteNote } = require("./lib/notes");
+const { getNoteList, setNewNote, deleteNote } = require("./lib/users");
+const { getUserFromDB, deleteUser, createUser } = require("./lib/users");
 
 const app = express();
 const path = require("path");
@@ -13,28 +14,28 @@ const port = process.env.PORT || 5000;
 const dbURL = process.env.DB_URL || "mongodb://localhost:27017";
 const dbName = process.env.DB_NAME || "MyNotes";
 
-const users = [];
-
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 //Authentication Routes
-
 app.post(`/auth/register`, async (request, response) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    //Store User in DB
-    users.push({
-      id: Date.now().toString(),
+    const hashedPassword = await bcrypt.hash(request.body.password, 10);
+    const newUser = {
+      name: request.body.name,
       email: request.body.email,
       password: hashedPassword
-    });
-    response.redirect("/auth/login");
+    };
+    const findUserWithNewUserMail = await getUserFromDB(newUser);
+
+    if (findUserWithNewUserMail !== null) {
+      response.status(200).send("Registered!");
+    } else {
+      response.status(401).send("Register failed! Mail already in use!");
+    }
   } catch (error) {
-    alert("Something went wrong!");
+    response.status(401).send("Register failed!");
   }
-  console.log(users);
 });
 
 //Note Routes
