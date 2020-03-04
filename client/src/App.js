@@ -1,5 +1,11 @@
 import React, { Fragment, useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 
 import Top from "./components/Top";
 import GridContainer from "./components/appContainer/GridContainer";
@@ -29,14 +35,19 @@ function App() {
                   <Welcome />
                 </Route>
                 <Switch>
-                  <Route path="/auth/login">
+                  <Route path="/auth">
                     <Login setToken={setToken} />
                   </Route>
-                  <Route path="/addnote">
-                    <AddNote token={token} />
+                  <Route exact path="/addnote">
+                    {token ? (
+                      <AddNote token={token} />
+                    ) : (
+                      <Redirect to="/auth" />
+                    )}
                   </Route>
-                  <Route path="/notes">
-                    <Notes open={open} />
+                  <Route exact path="/notes">
+                    {token ? <Notes open={open} /> : <Redirect to="/auth" />}
+
                   </Route>
                 </Switch>
               </MainContainer>
