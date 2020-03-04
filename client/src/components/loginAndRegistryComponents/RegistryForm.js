@@ -3,7 +3,7 @@ import { css } from "@emotion/core";
 import { ThemeContext } from "../../themes/ThemeContext";
 
 import Form from "../Form";
-import { registerNewUser } from "../../api/auth";
+import { checkUsers } from "../../api/auth";
 import { useHistory } from "react-router";
 
 export default function LoginForm() {
@@ -48,7 +48,7 @@ export default function LoginForm() {
       <Form
         onFormSubmit={async formData => {
           if (formData.password === formData.confirm) {
-            const response = await registerNewUser(
+            const response = await checkUsers(
               "http://localhost:5000/auth/register",
               formData
             );

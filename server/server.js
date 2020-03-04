@@ -42,16 +42,22 @@ app.post(`/auth/register`, async (request, response) => {
   }
 });
 
-app.get(`/auth/login`, async (request, response) => {
+app.post(`/auth/login`, async (request, response) => {
+  console.log(request.body.email);
   const user = await getUserByMail(request.body.email);
   if (user == null) {
     return response.send(400).send("User does not exist");
   }
+  const comparePasswords = await bcrypt.compare(
+    request.body.password,
+    user.password
+  );
+  console.log(comparePasswords);
   try {
-    if (await bcrypt.compare(request.body.password, user.password)) {
-      response.send("Success");
+    if (comparePasswords) {
+      response.status(200).send("Success");
     } else {
-      response.send("Not allowed");
+      response.status(401).send("Not allowed");
     }
   } catch (error) {
     response.status(500).send();

@@ -1,4 +1,4 @@
-export async function registerNewUser(path, data) {
+export async function checkUsers(path, data) {
   return fetch(path, {
     method: "POST",
     headers: {

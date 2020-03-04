@@ -33,7 +33,7 @@ function App() {
         <GlobalStyles />
         <GridContainer>
           <Router>
-            <Top toggleOverlay={() => setOpen(!open)} darkmode={darkmode} />
+            <Top toggleOverlay={() => setOpen(!open)} />
             <MainContainer>
               <Switch>
                 <Route path="/auth">

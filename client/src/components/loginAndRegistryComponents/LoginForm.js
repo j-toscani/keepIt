@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { css } from "@emotion/core";
 import { ThemeContext } from "../../themes/ThemeContext";
 import { useHistory } from "react-router-dom";
+import { checkUsers } from "../../api/auth";
 
 import Form from "../Form";
 
@@ -13,9 +14,17 @@ export default function LoginForm() {
     history.push("/notes");
   }
 
-  function handleFormSubmit(formData) {
-    alert(`You entered: ${JSON.stringify(formData)}.`);
-    goToNotes();
+  async function handleFormSubmit(formData) {
+    const checkCredentials = await checkUsers(
+      "http://localhost:5000/auth/login",
+      formData
+    );
+    const responseText = await checkCredentials.text();
+    if (checkCredentials.ok) {
+      goToNotes();
+    } else {
+      alert(responseText);
+    }
   }
 
   const inputElements = [

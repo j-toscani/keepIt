@@ -11,6 +11,7 @@ async function setNewUser(user) {
 async function getUserByMail(mail) {
   const userCollection = await getCollection(collectionName);
   const foundUser = await userCollection.findOne({ email: mail }, { email: 1 });
+  console.log(foundUser);
   return foundUser;
 }
 
