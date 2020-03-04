@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { css } from "@emotion/core";
 import { ThemeContext } from "../themes/ThemeContext";
 import Form from "./Form";
+import createNewNote from "../lib/createNewNote";
 
-export default function NewNoteForm() {
+export default function NewNoteForm({ token }) {
   const { theme } = useContext(ThemeContext);
 
   const inputElements = [
@@ -38,7 +39,15 @@ export default function NewNoteForm() {
         padding: 15px;
       `}
     >
-      <Form inputElements={inputElements} buttonContent={"Add Note!"} />
+      <Form
+        onFormSubmit={formData => {
+          createNewNote(formData, token)
+            .then(() => alert("Note created"))
+            .catch(() => alert("Note not created"));
+        }}
+        inputElements={inputElements}
+        buttonContent={"Add Note!"}
+      />
     </div>
   );
 }

@@ -5,10 +5,7 @@ import Button from "../Button";
 export default function SubmitButton({ noteInformation }) {
   async function submitFunction(event) {
     event.preventDefault();
-    createNewNote(noteInformation).then(
-      () => console.log("sending data was successful"),
-      () => console.log("creating note was unsseccessful")
-    );
+    createNewNote(noteInformation);
   }
   return (
     <Button

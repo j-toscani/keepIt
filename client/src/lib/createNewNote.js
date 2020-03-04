@@ -17,13 +17,17 @@ function addDateAndTimeInfoToData(data) {
   return data;
 }
 
-export default async function createNewNote(formData) {
+export default async function createNewNote(formData, token) {
   let note = { ...formData };
   if (note.content && note.name) {
     try {
       note = addDateAndTimeInfoToData(note);
-      const value = await createNewEntry("http://localhost:5000/notes", note);
-      return value.json();
+      const response = await createNewEntry(
+        "http://localhost:5000/notes",
+        note,
+        token
+      );
+      return response;
     } catch (err) {
       return err;
     }

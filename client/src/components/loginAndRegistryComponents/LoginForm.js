@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { css } from "@emotion/core";
 import { ThemeContext } from "../../themes/ThemeContext";
 import { useHistory } from "react-router-dom";
+import { checkUsers } from "../../api/auth";
 
 import Form from "../Form";
 
-export default function LoginForm() {
+export default function LoginForm({ setToken }) {
   const { theme } = useContext(ThemeContext);
   let history = useHistory();
 
@@ -13,10 +14,19 @@ export default function LoginForm() {
     history.push("/notes");
   }
 
-  function handleFormSubmit(formData) {
-    console.log(formData);
-    alert(`You entered: ${JSON.stringify(formData)}.`);
-    goToNotes();
+  async function handleFormSubmit(formData) {
+    const loginData = { ...formData };
+    const checkCredentials = await checkUsers(
+      "http://localhost:5000/auth/login",
+      loginData
+    );
+    const responseText = await checkCredentials.json();
+    if (checkCredentials.ok) {
+      setToken(responseText);
+      goToNotes();
+    } else {
+      alert(responseText);
+    }
   }
 
   const inputElements = [
@@ -43,6 +53,7 @@ export default function LoginForm() {
       `}
     >
       <Form
+        action={"/auth/login"}
         inputElements={inputElements}
         onFormSubmit={handleFormSubmit}
         buttonContent={"Log in..."}

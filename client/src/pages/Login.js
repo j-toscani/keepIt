@@ -8,7 +8,7 @@ import RegistryForm from "../components/loginAndRegistryComponents/RegistryForm"
 import { Switch, Route } from "react-router-dom";
 import CategoryBumper from "../components/loginAndRegistryComponents/CategoryBumper";
 
-export default function Login() {
+export default function Login({ setToken }) {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -40,7 +40,7 @@ export default function Login() {
       </div>
       <Switch>
         <Route exact path="/auth/login">
-          <LoginForm />
+          <LoginForm setToken={setToken} />
         </Route>
         <Route exact path="/auth/register">
           <RegistryForm />

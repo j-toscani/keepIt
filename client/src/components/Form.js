@@ -27,7 +27,12 @@ export default function Form({ inputElements, onFormSubmit, buttonContent }) {
 
   return (
     <form
-      onSubmit={() => onFormSubmit(noteInformation)}
+      method="POST"
+      onSubmit={e => {
+        e.preventDefault();
+        onFormSubmit(noteInformation);
+        setNoteInformation({});
+      }}
       autoComplete="off"
       css={css`
         background: ${theme.contrast};
@@ -49,6 +54,7 @@ export default function Form({ inputElements, onFormSubmit, buttonContent }) {
             return (
               <SmallTextInput
                 key={attribute}
+                value={noteInformation[attribute]}
                 handleChange={createGetInputValue()}
                 inputAttribute={attribute}
                 placeholder={placeholder}
@@ -64,15 +70,17 @@ export default function Form({ inputElements, onFormSubmit, buttonContent }) {
                 handleChange={createGetInputValue(inputElement.seperator)}
                 inputAttribute={attribute}
                 placeholder={placeholder}
+                value={noteInformation[attribute]}
                 type={
                   inputElement.HTMLInputType ? inputElement.HTMLInputType : ""
                 }
               />
             );
-          } else if (type === "textArea" || "textarea") {
+          } else if (type === ("textArea" || "textarea")) {
             return (
               <ContentArea
                 key={attribute}
+                value={noteInformation[attribute]}
                 handleChange={createGetInputValue()}
                 inputAttribute={attribute}
                 placeholder={placeholder}
@@ -88,10 +96,6 @@ export default function Form({ inputElements, onFormSubmit, buttonContent }) {
           margin: auto;
           margin-top: 20px;
         `}
-        handleClick={e => {
-          e.preventDefault();
-          onFormSubmit(noteInformation);
-        }}
       >
         {buttonContent}
       </Button>

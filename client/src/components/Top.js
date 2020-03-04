@@ -1,56 +1,47 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { css } from "@emotion/core";
-import { useHistory } from "react-router-dom";
+
 import LogoColor from "./LogoColor";
 import StyledHeader from "./StyledHeader";
-import Button from "./Button";
 import Option from "../ressources/Options";
-import Cross from "../ressources/Cross";
-
+import Button from "./Button";
+import { useHistory, useLocation } from "react-router";
+import { useContext } from "react";
 import { ThemeContext } from "../themes/ThemeContext";
 
 export default function Top({ darkmode, toggleOverlay }) {
-  const { toggleTheme, theme } = useContext(ThemeContext);
-
-  const currentLocation = window.location.pathname;
-  const onNewNotePage = currentLocation === "/addnote";
-
   let history = useHistory();
-
-  function goToAddNotes() {
-    history.push("/addnote");
-  }
+  const location = useLocation().pathname;
+  const loggedOut = "/auth/login" || "/auth/register" || "/welcome" || "/";
+  const { theme } = useContext(ThemeContext);
 
   return (
     <StyledHeader>
-      <Button
-        handleClick={toggleOverlay}
-        css={css`
-          padding: 1px;
-        `}
-      >
-        <Option />
-      </Button>
+      {location !== loggedOut && (
+        <Button
+          handleClick={toggleOverlay}
+          css={css`
+            padding: 1px;
+          `}
+        >
+          <Option />
+        </Button>
+      )}
       <h1>KeepIT</h1>
       <LogoColor darkmode={darkmode} />
-      {!onNewNotePage && (
+      {location !== loggedOut && (
         <Button
           css={css`
-            border-radius: 50px;
-            padding: 5px;
-            background: ${theme.contrast};
-            border: 1px solid ${theme.accent};
-            position: absolute;
-            bottom: -20px;
-            right: 10px;
+            padding: 10px;
+            color: ${theme.contrast};
+            background: ${theme.main};
+            :hover {
+              background: ${theme.accent};
+            }
           `}
-          handleClick={goToAddNotes}
+          handleClick={() => history.push("auth/login")}
         >
-          <Cross
-            css={css`
-              fill: ${theme.accent};
-            `}
-          />
+          Log me out...
         </Button>
       )}
     </StyledHeader>
