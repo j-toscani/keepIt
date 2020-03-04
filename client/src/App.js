@@ -15,41 +15,31 @@ import ThemeProvider from "./themes/ThemeContext";
 function App() {
   const [open, setOpen] = useState(false);
 
-  // useEffect(() => {
-  // fetchList("http://localhost:5000/notes").then(
-  // response => setData(response),
-  //() => {
-  //on reject
-  //const notification = "No Data recieved...";
-  // setData(notification);
-  //alert(notification);
-  //}
-  // );
-  // }, []);
-
   return (
     <Fragment>
       <ThemeProvider>
         <GlobalStyles />
         <GridContainer>
           <Router>
-            <Top toggleOverlay={() => setOpen(!open)} />
-            <MainContainer>
-              <Switch>
-                <Route path="/auth">
-                  <Login />
-                </Route>
-                <Route path="/addnote">
-                  <AddNote />
-                </Route>
-                <Route path="/notes">
-                  <Notes open={open} />
-                </Route>
-                <Route exact path="/">
+            <Route path="/">
+              <Top toggleOverlay={() => setOpen(!open)} />
+              <MainContainer>
+                <Route exact path="/welcome">
                   <Welcome />
                 </Route>
-              </Switch>
-            </MainContainer>
+                <Switch>
+                  <Route path="/auth/login">
+                    <Login />
+                  </Route>
+                  <Route path="/addnote">
+                    <AddNote />
+                  </Route>
+                  <Route path="/notes">
+                    <Notes open={open} />
+                  </Route>
+                </Switch>
+              </MainContainer>
+            </Route>
           </Router>
         </GridContainer>
       </ThemeProvider>
