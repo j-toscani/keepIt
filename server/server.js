@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const { initDatabase } = require("./db");
 const { getNoteList, setNewNote, deleteNote } = require("./lib/notes");
@@ -43,7 +44,6 @@ app.post(`/auth/register`, async (request, response) => {
 });
 
 app.post(`/auth/login`, async (request, response) => {
-  console.log(request.body.email);
   const user = await getUserByMail(request.body.email);
   if (user == null) {
     return response.send(400).send("User does not exist");
@@ -52,10 +52,14 @@ app.post(`/auth/login`, async (request, response) => {
     request.body.password,
     user.password
   );
-  console.log(comparePasswords);
+
   try {
     if (comparePasswords) {
-      response.status(200).send("Success");
+      const accessToken = jwt.sign(
+        request.body.email,
+        process.env.ACCESS_TOKEN_SECRET
+      );
+      response.json(accessToken);
     } else {
       response.status(401).send("Not allowed");
     }
@@ -65,7 +69,7 @@ app.post(`/auth/login`, async (request, response) => {
 });
 
 //Note Routes
-app.get(`/notes`, async (request, response) => {
+app.get(`/notes`, authenticateToken, async (request, response) => {
   try {
     const notes = await getNoteList();
     return response.json(notes);
@@ -74,7 +78,7 @@ app.get(`/notes`, async (request, response) => {
   }
 });
 
-app.post(`/notes`, async (request, response) => {
+app.post(`/notes`, authenticateToken, async (request, response) => {
   try {
     setNewNote(request.body).then(newNote => {
       response.send(newNote);
@@ -84,7 +88,7 @@ app.post(`/notes`, async (request, response) => {
   }
 });
 
-app.post(`/notes/:id`, async (request, response) => {
+app.post(`/notes/:id`, authenticateToken, async (request, response) => {
   try {
     const updatedNote = await deleteNote(request.params.id);
     return response.json(updatedNote);
@@ -92,6 +96,19 @@ app.post(`/notes/:id`, async (request, response) => {
     return response.end("Error");
   }
 });
+
+//Authentication Middleware
+function authenticateToken(request, response, next) {
+  const authHeader = request.headers["authorization"];
+  const token = authHeader;
+
+  if (token == null) return response.sendStatus(401);
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, error => {
+    if (error) return response.sendStatus(403);
+    next();
+  });
+}
 
 //DB Connection
 

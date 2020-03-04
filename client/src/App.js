@@ -14,6 +14,7 @@ import ThemeProvider from "./themes/ThemeContext";
 
 function App() {
   const [open, setOpen] = useState(false);
+  const [token, setToken] = useState(false);
 
   return (
     <Fragment>
@@ -29,10 +30,10 @@ function App() {
                 </Route>
                 <Switch>
                   <Route path="/auth/login">
-                    <Login />
+                    <Login setToken={setToken} />
                   </Route>
                   <Route path="/addnote">
-                    <AddNote />
+                    <AddNote token={token} />
                   </Route>
                   <Route path="/notes">
                     <Notes open={open} />

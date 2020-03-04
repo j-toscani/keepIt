@@ -6,7 +6,7 @@ import { checkUsers } from "../../api/auth";
 
 import Form from "../Form";
 
-export default function LoginForm() {
+export default function LoginForm({ setToken }) {
   const { theme } = useContext(ThemeContext);
   let history = useHistory();
 
@@ -15,12 +15,14 @@ export default function LoginForm() {
   }
 
   async function handleFormSubmit(formData) {
+    const loginData = { ...formData };
     const checkCredentials = await checkUsers(
       "http://localhost:5000/auth/login",
-      formData
+      loginData
     );
-    const responseText = await checkCredentials.text();
+    const responseText = await checkCredentials.json();
     if (checkCredentials.ok) {
+      setToken(responseText);
       goToNotes();
     } else {
       alert(responseText);

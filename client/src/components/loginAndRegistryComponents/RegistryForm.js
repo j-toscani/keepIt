@@ -47,10 +47,11 @@ export default function LoginForm() {
     >
       <Form
         onFormSubmit={async formData => {
-          if (formData.password === formData.confirm) {
+          const registryData = formData;
+          if (registryData.password === registryData.confirm) {
             const response = await checkUsers(
               "http://localhost:5000/auth/register",
-              formData
+              registryData
             );
             const responseText = await response.text();
             if (response.ok) {

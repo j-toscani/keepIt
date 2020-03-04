@@ -6,11 +6,12 @@ export default function ContentArea({
   handleChange,
   inputAttribute,
   inputLabel,
-  placeholder,
-  value
+  value,
+  placeholder
 }) {
   const fallbackValue = firstLetterToUppercase(inputAttribute);
-  const [inputValue, setinputValue] = useState(value);
+  const [inputValue, setInputValue] = useState(value);
+
   return (
     <div
       css={css`
@@ -25,6 +26,7 @@ export default function ContentArea({
     >
       <label>{inputLabel ? inputLabel : fallbackValue}</label>
       <textarea
+        value={inputValue}
         css={css`
           width: 100%;
           height: 120px;
@@ -33,7 +35,6 @@ export default function ContentArea({
           resize: none;
         `}
         required
-        value={inputValue}
         placeholder={
           placeholder ? placeholder : `Write your /"${fallbackValue}"/ here...`
         }

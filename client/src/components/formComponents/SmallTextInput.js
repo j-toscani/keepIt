@@ -12,7 +12,8 @@ export default function SmallTextInput({
   placeholder
 }) {
   const altPlaceholder = firstLetterToUppercase(inputAttribute);
-  const [inputValue, setinputValue] = useState(value);
+  const [inputValue, setInputValue] = useState(value);
+
   return (
     <div
       css={css`

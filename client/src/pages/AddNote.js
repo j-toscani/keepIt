@@ -6,7 +6,7 @@ import Button from "../components/Button";
 import Cross from "../ressources/Cross";
 import { useHistory } from "react-router-dom";
 
-export default function AddNote() {
+export default function AddNote({ token }) {
   const { theme } = useContext(ThemeContext);
 
   let history = useHistory();
@@ -43,7 +43,7 @@ export default function AddNote() {
           `}
         ></Cross>
       </Button>
-      <NewNoteForm />
+      <NewNoteForm token={token} />
     </div>
   );
 }
