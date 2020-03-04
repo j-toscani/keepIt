@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Top from "./components/Top";
@@ -10,26 +10,22 @@ import Login from "./pages/Login";
 import Notes from "./pages/Notes";
 import Welcome from "./pages/Welcome";
 
-import { fetchList } from "./api/notes";
 import ThemeProvider from "./themes/ThemeContext";
 
 function App() {
-  const [darkmode, setDarkmode] = useState(false);
   const [open, setOpen] = useState(false);
-  const [location, setLocation] = useState(false);
-  const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetchList("http://localhost:5000/notes").then(
-      response => setData(response),
-      () => {
-        //on reject
-        const notification = "No Data recieved...";
-        setData(notification);
-        alert(notification);
-      }
-    );
-  }, []);
+  // useEffect(() => {
+  // fetchList("http://localhost:5000/notes").then(
+  // response => setData(response),
+  //() => {
+  //on reject
+  //const notification = "No Data recieved...";
+  // setData(notification);
+  //alert(notification);
+  //}
+  // );
+  // }, []);
 
   return (
     <Fragment>

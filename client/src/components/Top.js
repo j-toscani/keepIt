@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { css } from "@emotion/core";
 import { useHistory } from "react-router-dom";
 import LogoColor from "./LogoColor";

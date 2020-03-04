@@ -75,7 +75,7 @@ export default function Form({ inputElements, onFormSubmit, buttonContent }) {
                 }
               />
             );
-          } else if (type === "textArea" || "textarea") {
+          } else if (type === ("textArea" || "textarea")) {
             return (
               <ContentArea
                 key={attribute}

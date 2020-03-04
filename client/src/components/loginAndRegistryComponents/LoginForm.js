@@ -14,7 +14,6 @@ export default function LoginForm() {
   }
 
   function handleFormSubmit(formData) {
-    console.log(formData);
     alert(`You entered: ${JSON.stringify(formData)}.`);
     goToNotes();
   }

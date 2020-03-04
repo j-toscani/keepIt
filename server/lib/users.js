@@ -1,20 +1,16 @@
 const { getCollection } = require("../db");
-const ObjectId = require("mongodb").ObjectId;
 
 const collectionName = "users";
 
 async function setNewUser(user) {
   const userCollection = await getCollection(collectionName);
-  await userCollection.insertOne(user);
-  return user;
+  const userInserted = await userCollection.insertOne(user);
+  return userInserted.result.ok;
 }
 
-async function getUserFromDB(user) {
+async function getUserByMail(mail) {
   const userCollection = await getCollection(collectionName);
-  const foundUser = await userCollection.findOne(
-    { email: user.email },
-    { email: 1 }
-  );
+  const foundUser = await userCollection.findOne({ email: mail }, { email: 1 });
   return foundUser;
 }
 
@@ -27,5 +23,5 @@ async function deleteUser(user) {
 }
 
 exports.setNewUser = setNewUser;
-exports.getUserFromDB = getUserFromDB;
+exports.getUserByMail = getUserByMail;
 exports.deleteUser = deleteUser;

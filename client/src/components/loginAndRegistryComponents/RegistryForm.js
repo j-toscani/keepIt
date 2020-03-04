@@ -46,17 +46,19 @@ export default function LoginForm() {
       `}
     >
       <Form
-        onFormSubmit={formData => {
-          alert(formData.password === formData.confirm);
+        onFormSubmit={async formData => {
           if (formData.password === formData.confirm) {
-            registerNewUser("http://localhost:5000/auth/register", formData)
-              .then(() => {
-                alert(
-                  "Registry successfull! You wil be sent to the login Page..."
-                );
-                history.push("/auth/login");
-              })
-              .catch(response => alert(response));
+            const response = await registerNewUser(
+              "http://localhost:5000/auth/register",
+              formData
+            );
+            const responseText = await response.text();
+            if (response.ok) {
+              alert(responseText);
+              history.push("/auth/login");
+            } else {
+              alert(responseText, response.status);
+            }
           } else {
             alert("Password input not identical!");
           }

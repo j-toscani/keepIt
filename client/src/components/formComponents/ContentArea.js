@@ -33,11 +33,13 @@ export default function ContentArea({
           resize: none;
         `}
         required
-        value={value}
+        value={inputValue}
         placeholder={
           placeholder ? placeholder : `Write your /"${fallbackValue}"/ here...`
         }
-        onChange={handleChange}
+        onChange={event => {
+          handleChange(inputAttribute, event.target.value);
+        }}
       ></textarea>
     </div>
   );

@@ -4,8 +4,8 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 
 const { initDatabase } = require("./db");
-const { getNoteList, setNewNote, deleteNote } = require("./lib/users");
-const { getUserFromDB, deleteUser, createUser } = require("./lib/users");
+const { getNoteList, setNewNote, deleteNote } = require("./lib/notes");
+const { getUserByMail, deleteUser, setNewUser } = require("./lib/users");
 
 const app = express();
 const path = require("path");
@@ -26,15 +26,35 @@ app.post(`/auth/register`, async (request, response) => {
       email: request.body.email,
       password: hashedPassword
     };
-    const findUserWithNewUserMail = await getUserFromDB(newUser);
-
-    if (findUserWithNewUserMail !== null) {
-      response.status(200).send("Registered!");
+    const findUserWithNewUserMail = await getUserByMail(newUser.email);
+    if (findUserWithNewUserMail === null) {
+      const newUserIsSet = await setNewUser(newUser);
+      if (newUserIsSet === 1) {
+        response.status(200).send("Registered!");
+      } else {
+        response.status(503).send("Register failed! Could not save in DB.");
+      }
     } else {
-      response.status(401).send("Register failed! Mail already in use!");
+      response.status(401).send("Register failed! Could not save in DB.");
     }
   } catch (error) {
-    response.status(401).send("Register failed!");
+    response.status(500).send("Register failed!");
+  }
+});
+
+app.get(`/auth/login`, async (request, response) => {
+  const user = await getUserByMail(request.body.email);
+  if (user == null) {
+    return response.send(400).send("User does not exist");
+  }
+  try {
+    if (await bcrypt.compare(request.body.password, user.password)) {
+      response.send("Success");
+    } else {
+      response.send("Not allowed");
+    }
+  } catch (error) {
+    response.status(500).send();
   }
 });
 
