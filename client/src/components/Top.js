@@ -12,13 +12,18 @@ import { ThemeContext } from "../themes/ThemeContext";
 export default function Top({ darkmode, toggleOverlay }) {
   let history = useHistory();
   const location = useLocation().pathname;
+
   const loggedOutLocations = ["/auth", "/auth/register", "/welcome", "/"];
+
+  const loggedOut = "/auth/login" || "/auth/register" || "/welcome" || "/";
 
   const { theme } = useContext(ThemeContext);
 
   return (
     <StyledHeader>
+
       {!loggedOutLocations.includes(location) && (
+
         <Button
           handleClick={toggleOverlay}
           css={css`
@@ -30,7 +35,9 @@ export default function Top({ darkmode, toggleOverlay }) {
       )}
       <h1>KeepIT</h1>
       <LogoColor darkmode={darkmode} />
+
       {!loggedOutLocations.includes(location) && (
+
         <Button
           css={css`
             padding: 10px;
@@ -40,6 +47,7 @@ export default function Top({ darkmode, toggleOverlay }) {
               background: ${theme.accent};
             }
           `}
+
           handleClick={() => history.push("/auth")}
         >
           Log me out...

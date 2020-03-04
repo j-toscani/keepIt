@@ -39,7 +39,9 @@ export default function Login({ setToken }) {
         <CategoryBumper path={"/auth/register"} content={"Register..."} />
       </div>
       <Switch>
+
         <Route exact path="/auth">
+
           <LoginForm setToken={setToken} />
         </Route>
         <Route path="/auth/register">

@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -46,6 +47,7 @@ function App() {
                   </Route>
                   <Route exact path="/notes">
                     {token ? <Notes open={open} /> : <Redirect to="/auth" />}
+
                   </Route>
                 </Switch>
               </MainContainer>
