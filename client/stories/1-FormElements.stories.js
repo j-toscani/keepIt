@@ -1,10 +1,7 @@
 import React from "react";
 import SmallTextInput from "../src/components/formComponents/SmallTextInput";
-<<<<<<< HEAD
-=======
 import Form from "../src/components/Form";
 import { css } from "@emotion/core";
->>>>>>> efe2978d5cc2a8716e23648f808196893ef9a095
 
 export default {
   title: "Form Elements"
@@ -25,8 +22,6 @@ export const TextInput = () => (
   </div>
 );
 
-<<<<<<< HEAD
-=======
 const inputElements = [
   {
     placeholder: "Name your note",
@@ -66,4 +61,3 @@ export const FormTest = () => {
     </div>
   );
 };
->>>>>>> efe2978d5cc2a8716e23648f808196893ef9a095
