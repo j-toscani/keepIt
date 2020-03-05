@@ -4,9 +4,13 @@ const ObjectId = require("mongodb").ObjectId;
 const collectionName = "notes";
 
 async function setNewNote(note) {
-  const noteCollection = await getCollection(collectionName);
-  await noteCollection.insertOne(note);
-  return note;
+  try {
+    const noteCollection = await getCollection(collectionName);
+    await noteCollection.insertOne(note);
+    return note;
+  } catch (error) {
+    throw new Error("New Note could not be set.", error);
+  }
 }
 
 async function getNoteList() {

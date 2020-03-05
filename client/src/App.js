@@ -1,5 +1,11 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { Fragment, useState } from "react";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 
 import Top from "./components/Top";
 import GridContainer from "./components/appContainer/GridContainer";
@@ -10,28 +16,11 @@ import Login from "./pages/Login";
 import Notes from "./pages/Notes";
 import Welcome from "./pages/Welcome";
 
-import { fetchList } from "./api/notes";
 import ThemeProvider from "./themes/ThemeContext";
 
 function App() {
-  const [darkmode, setDarkmode] = useState(false);
-  const [data, setData] = useState(null);
-
-  function toggleTheme() {
-    setDarkmode(!darkmode);
-  }
-
-  useEffect(() => {
-    fetchList("http://localhost:5000/notes").then(
-      response => setData(response),
-      () => {
-        //on reject
-        const notification = "No Data recieved...";
-        setData(notification);
-        alert(notification);
-      }
-    );
-  }, []);
+  const [open, setOpen] = useState(false);
+  const [token, setToken] = useState(false);
 
   return (
     <Fragment>
@@ -39,23 +28,30 @@ function App() {
         <GlobalStyles />
         <GridContainer>
           <Router>
-            <Top handleClick={toggleTheme} darkmode={darkmode} />
-            <MainContainer>
-              <Switch>
-                <Route path="/auth">
-                  <Login />
-                </Route>
-                <Route path="/addnote">
-                  <AddNote />
-                </Route>
-                <Route path="/notes">
-                  <Notes />
-                </Route>
-                <Route path="/home">
+            <Route path="/">
+              <Top toggleOverlay={() => setOpen(!open)} />
+              <MainContainer>
+                <Route exact path="/welcome">
                   <Welcome />
                 </Route>
-              </Switch>
-            </MainContainer>
+                <Switch>
+                  <Route path="/auth">
+                    <Login setToken={setToken} />
+                  </Route>
+                  <Route exact path="/addnote">
+                    {token ? (
+                      <AddNote token={token} />
+                    ) : (
+                      <Redirect to="/auth" />
+                    )}
+                  </Route>
+                  <Route exact path="/notes">
+                    {token ? <Notes open={open} /> : <Redirect to="/auth" />}
+
+                  </Route>
+                </Switch>
+              </MainContainer>
+            </Route>
           </Router>
         </GridContainer>
       </ThemeProvider>

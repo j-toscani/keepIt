@@ -5,16 +5,16 @@ import { css } from "@emotion/core";
 
 import LoginForm from "../components/loginAndRegistryComponents/LoginForm";
 import RegistryForm from "../components/loginAndRegistryComponents/RegistryForm";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import CategoryBumper from "../components/loginAndRegistryComponents/CategoryBumper";
 
-export default function Login() {
+export default function Login({ setToken }) {
   const { theme } = useContext(ThemeContext);
 
   return (
     <div
       css={css`
-        height: 260px;
+        height: 320px;
         width: 260px;
         position: relative;
         background: ${theme.contrast};
@@ -35,14 +35,16 @@ export default function Login() {
           position: absolute;
         `}
       >
-        <CategoryBumper path={"/auth/login"} content={"Login..."} />
+        <CategoryBumper path={"/auth"} content={"Login..."} />
         <CategoryBumper path={"/auth/register"} content={"Register..."} />
       </div>
       <Switch>
-        <Route exact path="/auth/login">
-          <LoginForm />
+
+        <Route exact path="/auth">
+
+          <LoginForm setToken={setToken} />
         </Route>
-        <Route exact path="/auth/register">
+        <Route path="/auth/register">
           <RegistryForm />
         </Route>
       </Switch>

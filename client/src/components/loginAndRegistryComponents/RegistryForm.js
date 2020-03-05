@@ -1,48 +1,72 @@
-/** @jsx jsx */
-import { useState } from "react";
-import { css, jsx } from "@emotion/core";
-import SmallTextInput from "../formComponents/SmallTextInput";
-import Button from "../Button";
+import React, { useContext } from "react";
+import { css } from "@emotion/core";
+import { ThemeContext } from "../../themes/ThemeContext";
 
-export default function RegistryForm() {
-  const [registerInformation, setRegisterInformation] = useState({});
+import Form from "../Form";
+import { checkUsers } from "../../api/auth";
+import { useHistory } from "react-router";
 
-  function getInputValue(attribute, value) {
-    const newRegisterInformation = { ...registerInformation };
-    newRegisterInformation[attribute] = value;
-    setRegisterInformation(newRegisterInformation);
-  }
+export default function LoginForm() {
+  const { theme } = useContext(ThemeContext);
+  let history = useHistory();
+
+  const inputElements = [
+    {
+      placeholder: "E-Mail...",
+      attribute: "email",
+      type: "text",
+      HTMLInputType: "email"
+    },
+    {
+      placeholder: "Name...",
+      attribute: "name",
+      type: "text",
+      HTMLInputType: "text"
+    },
+    {
+      placeholder: "Password...",
+      attribute: "password",
+      type: "text",
+      HTMLInputType: "password"
+    },
+    {
+      placeholder: "Confirm password...",
+      attribute: "confirm",
+      type: "text",
+      HTMLInputType: "password"
+    }
+  ];
 
   return (
-    <form
+    <div
       css={css`
-        height: 160px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        padding: 10px;
+        height: 100%;
+        background: ${theme.contrast};
       `}
     >
-      <SmallTextInput
-        type={"email"}
-        inputAttribute={"mail"}
-        placeholder={"Enter your Mail..."}
-        handleChange={getInputValue}
+      <Form
+        onFormSubmit={async formData => {
+          const registryData = formData;
+          if (registryData.password === registryData.confirm) {
+            const response = await checkUsers(
+              "http://localhost:5000/auth/register",
+              registryData
+            );
+            const responseText = await response.text();
+            if (response.ok) {
+              alert(responseText);
+              history.push("/auth/login");
+            } else {
+              alert(responseText, response.status);
+            }
+          } else {
+            alert("Password input not identical!");
+          }
+        }}
+        inputElements={inputElements}
+        buttonContent={"Register..."}
       />
-      <SmallTextInput
-        type={"password"}
-        inputAttribute={"password"}
-        placeholder={"Enter your Password..."}
-        handleChange={getInputValue}
-      />
-      <SmallTextInput
-        type={"password"}
-        inputAttribute={"confirm"}
-        placeholder={"Enter your password..."}
-        handleChange={getInputValue}
-      />
-      <Button handleClick={() => alert("You are gettin logged in...")}>
-        {"Register..."}
-      </Button>
-    </form>
+    </div>
   );
 }

@@ -1,57 +1,53 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { useContext } from "react";
 import { css } from "@emotion/core";
-
-import SmallTextInput from "./formComponents/SmallTextInput";
-import SubmitButton from "./formComponents/SubmitButton";
 import { ThemeContext } from "../themes/ThemeContext";
+import Form from "./Form";
+import createNewNote from "../lib/createNewNote";
 
-export default function NewNoteForm() {
-  const [noteInformation, setNoteInformation] = useState({});
+export default function NewNoteForm({ token }) {
   const { theme } = useContext(ThemeContext);
 
-  function getInputValue(attribute, value) {
-    const newNoteInformation = { ...noteInformation };
-    newNoteInformation[attribute] = value;
-    setNoteInformation(newNoteInformation);
-  }
-
-  function getInputValueToArray(seperator) {
-    function newConverterFunction(attribute, value) {
-      const newNoteInformation = { ...noteInformation };
-      newNoteInformation[attribute] = value.split(seperator);
-      setNoteInformation(newNoteInformation);
+  const inputElements = [
+    {
+      placeholder: "Name your note",
+      attribute: "name",
+      type: "text",
+      HTMLInputType: "text"
+    },
+    {
+      placeholder: "Put your Content here!",
+      attribute: "content",
+      type: "textArea",
+      label: "Content"
+    },
+    {
+      placeholder: "E.g.: Tag1; Tag2 ...",
+      attribute: "tags",
+      seperator: ";",
+      HTMLInputType: "text",
+      type: "text"
     }
-    return newConverterFunction;
-  }
+  ];
 
   return (
-    <form
+    <div
       css={css`
-        background: ${theme.contrast};
         max-width: 280px;
-        min-height: 420px;
+        min-height: 380px;
         margin: auto;
-        padding: 20px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-direction: column;
-        color: ${theme.mainFont};
+        background: ${theme.contrast};
+        padding: 15px;
       `}
     >
-      <SmallTextInput handleChange={getInputValue} inputAttribute={"name"} />
-      <SmallTextInput
-        handleChange={getInputValueToArray(";")}
-        inputAttribute={"tags"}
-        placeholder={"Tag1; Tag2; Tag3 ..."}
+      <Form
+        onFormSubmit={formData => {
+          createNewNote(formData, token)
+            .then(() => alert("Note created"))
+            .catch(() => alert("Note not created"));
+        }}
+        inputElements={inputElements}
+        buttonContent={"Add Note!"}
       />
-      <label>Content</label>
-      <textarea
-        style={{ width: "240px" }}
-        placeholder="Textfield to write stuff in..."
-        onChange={event => getInputValue("content", event.target.value)}
-      ></textarea>
-      <SubmitButton noteInformation={noteInformation} />
-    </form>
+    </div>
   );
 }

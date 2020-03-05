@@ -1,48 +1,63 @@
-/** @jsx jsx */
-import { useState } from "react";
-import { css, jsx } from "@emotion/core";
-import SmallTextInput from "../formComponents/SmallTextInput";
-import Button from "../Button";
+import React, { useContext } from "react";
+import { css } from "@emotion/core";
+import { ThemeContext } from "../../themes/ThemeContext";
+import { useHistory } from "react-router-dom";
+import { checkUsers } from "../../api/auth";
 
-export default function LoginForm() {
-  const [loginInformation, setLoginInformation] = useState({});
+import Form from "../Form";
 
-  function getInputValue(attribute, value) {
-    const newLoginInformation = { ...loginInformation };
-    newLoginInformation[attribute] = value;
-    setLoginInformation(newLoginInformation);
+export default function LoginForm({ setToken }) {
+  const { theme } = useContext(ThemeContext);
+  let history = useHistory();
+
+  function goToNotes() {
+    history.push("/notes");
   }
 
+  async function handleFormSubmit(formData) {
+    const loginData = { ...formData };
+    const checkCredentials = await checkUsers(
+      "http://localhost:5000/auth/login",
+      loginData
+    );
+    const responseText = await checkCredentials.json();
+    if (checkCredentials.ok) {
+      setToken(responseText);
+      goToNotes();
+    } else {
+      alert(responseText);
+    }
+  }
+
+  const inputElements = [
+    {
+      placeholder: "E-Mail...",
+      attribute: "email",
+      type: "text",
+      HTMLInputType: "email"
+    },
+    {
+      placeholder: "Password...",
+      attribute: "password",
+      type: "text",
+      HTMLInputType: "password"
+    }
+  ];
+
   return (
-    <form
+    <div
       css={css`
-        height: 160px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        padding: 10px;
+        height: 100%;
+        background: ${theme.contrast};
       `}
     >
-      <SmallTextInput
-        type={"email"}
-        inputAttribute={"mail"}
-        placeholder={"Enter your Mail..."}
-        handleChange={getInputValue}
+      <Form
+        action={"/auth/login"}
+        inputElements={inputElements}
+        onFormSubmit={handleFormSubmit}
+        buttonContent={"Log in..."}
       />
-      <SmallTextInput
-        type={"password"}
-        inputAttribute={"Password"}
-        placeholder={"Enter your Password..."}
-        handleChange={getInputValue}
-      />
-      <Button
-        handleClick={e => {
-          debugger;
-          e.preventDefault();
-          alert("You are gettin logged in...");
-        }}
-      >
-        {"Log in..."}
-      </Button>
-    </form>
+    </div>
   );
 }
