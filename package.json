@@ -9,7 +9,8 @@
     "install:server": "npm install",
     "install:dep": "npm run install:client && npm run install:server",
     "start": "npm run install:dep && npm run start:app",
-    "lint": "eslint *.js && eslint ./lib/*.js"
+    "lint": "eslint *.js && eslint ./lib/*.js",
+    "dev": "concurrently \"nodemon server.js\" \"cd client && npm run start\""
   },
   "homepage": "https://github.com/j-toscani/keepit#readme",
   "devDependencies": {
