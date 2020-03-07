@@ -31,7 +31,7 @@ function App() {
             <Route path="/">
               <Top toggleOverlay={() => setOpen(!open)} />
               <MainContainer>
-                <Route exact path="/welcome">
+                <Route exact path="/">
                   <Welcome />
                 </Route>
                 <Switch>
@@ -47,7 +47,6 @@ function App() {
                   </Route>
                   <Route exact path="/notes">
                     {token ? <Notes open={open} /> : <Redirect to="/auth" />}
-
                   </Route>
                 </Switch>
               </MainContainer>
