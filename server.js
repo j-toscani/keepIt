@@ -110,15 +110,15 @@ function authenticateToken(request, response, next) {
   });
 }
 
-//DB Connection
-
+//Server serving React-App
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
   app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+    res.sendFile(path.join(__dirname, "client/dist", "index.html"));
   });
 }
 
+//DB Connection
 initDatabase(dbURL, dbName).then(() => {
   console.log(`Database ${(dbURL, dbName)} is ready`);
 
