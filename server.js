@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const serverless = require("serverless-http");
 
 const { initDatabase } = require("./db");
 const { getNoteList, setNewNote, deleteNote } = require("./lib/notes");
@@ -121,8 +122,12 @@ if (process.env.NODE_ENV === "production") {
 //DB Connection
 initDatabase(dbURL, dbName).then(() => {
   console.log(`Database ${(dbURL, dbName)} is ready`);
-
-  app.listen(port, () => {
-    console.log(`Server listens on http://localhost:${port}`);
-  });
+  if (process.env.NODE_ENV !== "production") {
+    app.listen(port, () => {
+      console.log(`Server listens on http://localhost:${port}`);
+    });
+  }
 });
+
+module.exports(app) = app;
+module.exports.handler = serverless(app);

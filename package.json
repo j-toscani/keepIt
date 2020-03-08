@@ -4,7 +4,7 @@
   "description": "A simple web app to create, edit and structure notes.",
   "main": "index.js",
   "scripts": {
-    "start:app": "concurrently \"node server.js\" \"cd client && npm run build\"",
+    "start:app": "concurrently \" cd client && npm run build && cd ../ \" \"node server-local.js\" ",
     "install:client": "cd client && npm install && cd ../",
     "install:server": "npm install",
     "install:dep": "npm run install:client && npm run install:server",
@@ -26,6 +26,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.5.4"
+    "mongodb": "^3.5.4",
+    "serverless-http": "^2.3.2"
   }
 }
