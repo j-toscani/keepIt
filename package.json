@@ -9,7 +9,7 @@
     "install:server": "npm install",
     "install:dep": "npm run install:client && npm run install:server",
     "heroku-prebuild": "cd client && npm install && cd ../",
-    "build": "cd client && npm run build cd ../",
+    "build": "cd client && npm run build && cd ../",
     "start": "node server.js",
     "lint": "eslint *.js && eslint ./lib/*.js",
     "dev": "concurrently \"nodemon server.js\" \"cd client && npm run start\""
