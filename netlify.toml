@@ -1,3 +1,3 @@
 [build]
-  command = "npm install:dep && npm run build"
+  command = "npm start"
   functions = "functions"
