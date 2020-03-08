@@ -5,7 +5,7 @@ export default function Notes() {
   let history = useHistory();
 
   function goToLogin() {
-    history.push("/auth/login");
+    history.push("/auth");
   }
 
   useEffect(() => {
@@ -14,10 +14,5 @@ export default function Notes() {
     }, 3000);
   });
 
-  return (
-    <div>
-      {"You are at the Welcome Page. Should only show if not logged in! "}
-      {"Should push to Login after 3 - 4 seconds"}
-    </div>
-  );
+  return <div>{"You will be redirected to the login Page in 3 seconds"}</div>;
 }
