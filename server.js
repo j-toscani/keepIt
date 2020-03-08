@@ -129,5 +129,5 @@ initDatabase(dbURL, dbName).then(() => {
   }
 });
 
-module.exports(app) = app;
+module.exports.app = app;
 module.exports.handler = serverless(app);
