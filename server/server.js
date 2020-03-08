@@ -100,8 +100,8 @@ app.post(`/notes/:id`, authenticateToken, async (request, response) => {
 //Authentication Middleware
 function authenticateToken(request, response, next) {
   const authHeader = request.headers["authorization"];
-  const token = authHeader;
-
+  const token = authHeader.plit(" ")[1];
+  console.log(token);
   if (token == null) return response.sendStatus(401);
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, error => {
