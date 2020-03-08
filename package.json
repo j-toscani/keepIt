@@ -4,11 +4,13 @@
   "description": "A simple web app to create, edit and structure notes.",
   "main": "index.js",
   "scripts": {
-    "start:app": "concurrently \"node server.js\" \"cd client && npm run build\"",
+    "start:app": "concurrently \"cd client && npm run build\" \"node server.js\" ",
     "install:client": "cd client && npm install && cd ../",
     "install:server": "npm install",
     "install:dep": "npm run install:client && npm run install:server",
-    "start": "npm run install:dep && npm run start:app",
+    "heroku-prebuild": "cd client && npm install && cd ../",
+    "build": "cd client && npm run build cd ../",
+    "start": "node server.js",
     "lint": "eslint *.js && eslint ./lib/*.js",
     "dev": "concurrently \"nodemon server.js\" \"cd client && npm run start\""
   },
