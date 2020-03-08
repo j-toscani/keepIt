@@ -9,7 +9,7 @@ export async function createNewEntry(path, data, token) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorization: token
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(data)
   });
@@ -21,7 +21,7 @@ export async function deleteEntry(path, id, token) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorization: token
+      "Authorization": `Bearer ${token}`
     }
   });
 }
