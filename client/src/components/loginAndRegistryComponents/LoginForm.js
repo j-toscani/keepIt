@@ -16,16 +16,21 @@ export default function LoginForm({ setToken }) {
 
   async function handleFormSubmit(formData) {
     const loginData = { ...formData };
-    const checkCredentials = await checkUsers(
-      "http://localhost:5000/auth/login",
-      loginData
-    );
-    const responseText = await checkCredentials.json();
-    if (checkCredentials.ok) {
-      setToken(responseText);
-      goToNotes();
-    } else {
-      alert(responseText);
+    console.log(formData);
+    try {
+      const checkCredentials = await checkUsers(
+        "http://localhost:5000/auth/login",
+        loginData
+      );
+      const responseText = await checkCredentials.json();
+      if (checkCredentials.ok) {
+        setToken(responseText);
+        goToNotes();
+      } else {
+        alert(responseText);
+      }
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
