@@ -4,7 +4,7 @@ import { ThemeContext } from "../themes/ThemeContext";
 import { fetchList, deleteEntry } from "../api/notes";
 import Button from "../components/Button";
 
-export default function Note({ entry, setData }) {
+export default function Note({ entry, setData, token }) {
   const { theme } = useContext(ThemeContext);
 
   const { _id, name, content } = entry;
@@ -12,7 +12,7 @@ export default function Note({ entry, setData }) {
     <div
       css={css`
         width: 200px;
-        height: 240px;
+
         margin: 10px;
       `}
     >
@@ -30,13 +30,14 @@ export default function Note({ entry, setData }) {
         <Button
           css={css`
             font-size: 12px;
+            margin-left: auto;
           `}
           handleClick={() => {
-            deleteEntry("/notes", _id)
-              .then(() =>
-                fetchList("/notes").then(response => setData(response))
+            deleteEntry("http://localhost:5000/notes", _id, token).then(() =>
+              fetchList("http://localhost:5000/notes", token).then(response =>
+                setData(response)
               )
-              .catch(() => alert("Note could not be found."));
+            );
           }}
         >
           X

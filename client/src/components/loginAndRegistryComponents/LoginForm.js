@@ -16,7 +16,7 @@ export default function LoginForm({ setToken }) {
 
   async function handleFormSubmit(formData) {
     const loginData = { ...formData };
-    console.log(formData);
+
     try {
       const checkCredentials = await checkUsers(
         "http://localhost:5000/auth/login",
@@ -27,7 +27,7 @@ export default function LoginForm({ setToken }) {
         setToken(responseText);
         goToNotes();
       } else {
-        alert(responseText);
+        alert("Login unsuccessfull: ", responseText);
       }
     } catch (err) {
       throw new Error(err);
