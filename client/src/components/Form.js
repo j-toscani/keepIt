@@ -31,7 +31,6 @@ export default function Form({ inputElements, onFormSubmit, buttonContent }) {
       onSubmit={e => {
         e.preventDefault();
         onFormSubmit(noteInformation);
-        setNoteInformation({});
       }}
       autoComplete="off"
       css={css`

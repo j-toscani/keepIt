@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import { css } from "@emotion/core";
 import { useHistory } from "react-router-dom";
 
@@ -8,23 +8,23 @@ import Button from "../components/Button";
 import Cross from "../ressources/Cross";
 
 import { ThemeContext } from "../themes/ThemeContext";
+import { fetchList } from "../api/notes";
+import { useEffect } from "react";
 
-export default function Notes({ open }) {
+export default function Notes({ open, token }) {
   const { theme } = useContext(ThemeContext);
-
+  const [noteList, setNoteList] = useState(false);
   let history = useHistory();
 
   function goToAddNotes() {
     history.push("/addnote");
   }
 
-  const entry = {
-    _id: 1,
-    name: "My Note...",
-    content:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero quisquam, nobis cumque quam similique tenetur cum minus temporibus rem est nisi, non, id ratione sed voluptate maiores earum repellendus vel."
-  };
-  const entryArray = [entry, entry, entry, entry, entry];
+  useEffect(() => {
+    fetchList("http://localhost:5000/notes", token)
+      .then(response => setNoteList(response))
+      .catch(err => console.log(err));
+  }, []);
 
   return (
     <Fragment>
@@ -47,8 +47,10 @@ export default function Notes({ open }) {
         />
       </Button>
 
-      {entryArray &&
-        entryArray.map((entry, index) => <Note key={index} entry={entry} />)}
+      {noteList &&
+        noteList.map((entry, index) => (
+          <Note setData={setNoteList} token={token} key={index} entry={entry} />
+        ))}
       <Overlay open={open} />
     </Fragment>
   );

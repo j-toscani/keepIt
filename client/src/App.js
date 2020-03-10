@@ -46,7 +46,11 @@ function App() {
                     )}
                   </Route>
                   <Route exact path="/notes">
-                    {token ? <Notes open={open} /> : <Redirect to="/auth" />}
+                    {token ? (
+                      <Notes token={token} open={open} />
+                    ) : (
+                      <Redirect to="/auth" />
+                    )}
                   </Route>
                 </Switch>
               </MainContainer>

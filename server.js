@@ -45,7 +45,6 @@ app.post(`/auth/register`, async (request, response) => {
 });
 
 app.post(`/auth/login`, async (request, response) => {
-  console.log(request.body.headers);
   const user = await getUserByMail(request.body.email);
   if (user == null) {
     return response.sendStatus(400);
@@ -93,16 +92,18 @@ app.post(`/notes`, authenticateToken, async (request, response) => {
 
 app.post(`/notes/:id`, authenticateToken, async (request, response) => {
   try {
+    console.log("request params: ", request.params.id);
     const updatedNote = await deleteNote(request.params.id);
-    return response.json(updatedNote);
+    return response.send(updatedNote);
   } catch (error) {
-    return response.end("Error");
+    return response.send("Error");
   }
 });
 
 //Authentication Middleware
 function authenticateToken(request, response, next) {
   const authHeader = request.headers["authorization"];
+
   const token = authHeader.split(" ")[1];
   if (token == null) return response.sendStatus(401);
 
