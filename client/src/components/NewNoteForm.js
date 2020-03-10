@@ -42,7 +42,13 @@ export default function NewNoteForm({ token }) {
       <Form
         onFormSubmit={formData => {
           createNewNote(formData, token)
-            .then(() => alert("Note created"))
+            .then(response => {
+              if (response.ok) {
+                alert("Note created");
+              } else {
+                alert(response.status);
+              }
+            })
             .catch(() => alert("Note not created"));
         }}
         inputElements={inputElements}

@@ -15,7 +15,8 @@ const port = process.env.PORT || 5000;
 const dbURL = process.env.DB_URL || "mongodb://localhost:27017";
 const dbName = process.env.DB_NAME || "MyNotes";
 
-app.use(cors());
+app.use(cors({ origin: `${process.env.HOST_URL}` || "*" }));
+
 app.use(express.json());
 
 //Authentication Routes
@@ -31,22 +32,23 @@ app.post(`/auth/register`, async (request, response) => {
     if (findUserWithNewUserMail === null) {
       const newUserIsSet = await setNewUser(newUser);
       if (newUserIsSet === 1) {
-        response.status(200).send("Registered!");
+        response.sendStatus(200);
       } else {
-        response.status(503).send("Register failed! Could not save in DB.");
+        response.sendStatus(503);
       }
     } else {
-      response.status(401).send("Register failed! Could not save in DB.");
+      response.sendStatus(401);
     }
   } catch (error) {
-    response.status(500).send("Register failed!");
+    response.sendStatus(500);
   }
 });
 
 app.post(`/auth/login`, async (request, response) => {
+  console.log(request.body.headers);
   const user = await getUserByMail(request.body.email);
   if (user == null) {
-    return response.send(400).send("User does not exist");
+    return response.sendStatus(400);
   }
   const comparePasswords = await bcrypt.compare(
     request.body.password,
@@ -61,18 +63,19 @@ app.post(`/auth/login`, async (request, response) => {
       );
       response.json(accessToken);
     } else {
-      response.status(401).send("Not allowed");
+      return response.sendStatus(401);
     }
   } catch (error) {
-    response.status(500).send();
+    return response.sendStatus(500);
   }
 });
 
 //Note Routes
 app.get(`/notes`, authenticateToken, async (request, response) => {
+  const user = request.body.user;
   try {
-    const notes = await getNoteList();
-    return response.json(notes);
+    const noteList = await getNoteList(user);
+    return response.json(noteList);
   } catch (error) {
     return response.end("Error");
   }
@@ -84,7 +87,7 @@ app.post(`/notes`, authenticateToken, async (request, response) => {
       response.send(newNote);
     });
   } catch (error) {
-    return response.body.end("Error");
+    return response.body.send("Error: ", error);
   }
 });
 
@@ -100,12 +103,12 @@ app.post(`/notes/:id`, authenticateToken, async (request, response) => {
 //Authentication Middleware
 function authenticateToken(request, response, next) {
   const authHeader = request.headers["authorization"];
-  const token = authHeader.plit(" ")[1];
-  console.log(token);
+  const token = authHeader.split(" ")[1];
   if (token == null) return response.sendStatus(401);
 
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, error => {
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (error, user) => {
     if (error) return response.sendStatus(403);
+    request.body["user"] = user;
     next();
   });
 }
